@@ -9,7 +9,7 @@ const Splash = () => {
             <View style={{ height: 100, width: 100, opacity: 0.8 }}>
                 <ILLogo />
             </View>
-            <Text style={styles.text}>Dosen<Text style={{color:'orange', }}>Online</Text></Text>
+            <Text style={styles.text}>Dosen<Text style={{ }}>Online</Text></Text>
         </View>
     )
 }
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         fontSize: 23, 
         marginTop: 15, 
         opacity: 0.8,
-        fontStyle:'italic'
+        fontFamily : 'Lato-Regular'
     }
 })
 
