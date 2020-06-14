@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { ILLogo } from '../../asset'
 
-const Splash = () => {
+const Splash = ({ navigation }) => {
+    useEffect(() => {
+        setTimeout(() => {
+            navigation.replace('GetStarted')
+        }, 3000);
+    }, [navigation])
     return (
         <View style={styles.page}>
 
             <View style={{ height: 100, width: 100, opacity: 0.8 }}>
                 <ILLogo />
             </View>
-            <Text style={styles.text}>Dosen<Text style={{ }}>Online</Text></Text>
+            <Text style={styles.text}>Dosen<Text style={{}}>Online</Text></Text>
         </View>
     )
 }
@@ -18,17 +23,17 @@ export default Splash
 
 const styles = StyleSheet.create({
     page: {
-        backgroundColor: 'darkcyan', 
-        flex: 1, 
-        alignItems: 'center', 
+        backgroundColor: 'darkcyan',
+        flex: 1,
+        alignItems: 'center',
         justifyContent: 'center'
     },
     text: {
-        color: 'white', 
-        fontSize: 23, 
-        marginTop: 15, 
+        color: 'white',
+        fontSize: 23,
+        marginTop: 15,
         opacity: 0.8,
-        fontFamily : 'Lato-Regular'
+        fontFamily: 'Lato-Regular'
     }
 })
 
