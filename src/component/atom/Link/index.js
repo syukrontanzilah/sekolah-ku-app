@@ -1,11 +1,12 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { colors } from '../../../utils'
 
 const Link = ({title, size, align}) => {
     return (
-        <View>
+        <TouchableOpacity>
             <Text style={styles.text(size, align)}>{title}</Text>
-        </View>
+        </TouchableOpacity>
     )
 }
 
@@ -14,7 +15,7 @@ export default Link
 const styles = StyleSheet.create({
     text: (size, align) => ({
         fontSize: size,
-        color: '#7d8797',
+        color: colors.text.secondary,
         fontFamily: 'Lato-Regular',
         textDecorationLine: 'underline',
         textAlign: align

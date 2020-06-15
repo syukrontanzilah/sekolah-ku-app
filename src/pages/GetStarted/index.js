@@ -15,20 +15,20 @@ const GetStarted = ({ navigation }) => {
                 backgroundColor: 'rgba(0,0,0,0.7)',
                 padding: 20,
                 borderRadius: 20,
-                maxWidth: '50%',
+                maxWidth: '60%',
                 borderBottomLeftRadius: 0
             }}>
-                <Text style={styles.text}>"Bertanya ke dosen bisa kapan saja dan dimana saja"</Text>
+                <Text style={styles.text}>"Lebih dekat dengan Sekolahmu & Bertanya dengan guru jadi lebih mudah"</Text>
 
             </View>
 
             <View style={{ marginTop: 50 }}>
                 <Button 
-                title='Get Started' 
+                title='Buat akun baru' 
                 onPress={() => navigation.navigate('Register')} />
                 <Gap height={16} />
                 <Button 
-                title='Sign in' 
+                title='Masuk' 
                 type='secondary'
                 onPress={() => navigation.navigate('Login')} />
             </View>

@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { ILLogo } from '../../asset'
 import { Input, Link, Button, Gap } from '../../component/atom'
+import { colors } from '../../utils'
 
 const Login = () => {
     return (
@@ -10,16 +11,16 @@ const Login = () => {
                 <ILLogo />
             </View>
             <View>
-                <Text style={styles.desc}>Masuk dan mulai bertanya pada Dosen</Text>
-                <Input label='Email Address' />
+                <Text style={styles.desc}>Masuk dan lebih dekat dengan Sekolah mu</Text>
+                <Input label='Alamat Email' />
                 <Gap height={20} />
-                <Input label='Password' />
+                <Input label='Kata Sandi' />
                 <Gap height={10} />
-                <Link title='Forgot Password' size={12} />
+                <Link title='Lupa kata sandi' size={12} />
                 <Gap height={20} />
-                <Button title='Log In' />
+                <Button title='Masuk' />
                 <Gap height={15} />
-                <Link title='Create New Account' size={16} align='center' />
+                <Link title='Buat akun baru' size={16} align='center' />
             </View>
         </View>
     )
@@ -35,8 +36,8 @@ const styles = StyleSheet.create({
     desc: {
         fontSize: 20,
         fontFamily: 'Lato-Regular',
-        maxWidth: 150,
-        //color: 'darkcyan',
+        maxWidth: 160,
+        color: colors.text.primary,
         marginBottom: 40,
         marginTop: 20
     }
