@@ -1,17 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-import { IconBackDark } from '../../../asset'
-import { Gap } from '../../atom'
-import { colors } from '../../../utils'
+import { Gap, Button } from '../../atom'
+import { colors, fonts } from '../../../utils'
 
-const Header = ({}) => {
+const Header = ({onPress, title}) => {
     return (
         <View style={styles.container}>
-            <TouchableOpacity>
-                <IconBackDark />
-            </TouchableOpacity>
-
-            <Text style={styles.text}>text header</Text>
+                <Button type ='icon-only' icon='back-dark' onPress={onPress} />
+            <Text style={styles.text}>{title}</Text>
             <Gap width={20} />
         </View>
     )
@@ -30,7 +26,7 @@ const styles = StyleSheet.create({
     text: {
         flex: 1,
         textAlign: 'center',
-        fontFamily: 'Lato-Bold',
+        fontFamily: fonts.primary[800],
         fontSize: 21,
         color: colors.text.primary
 

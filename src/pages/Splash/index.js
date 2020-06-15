@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { ILLogo } from '../../asset'
+import { fonts } from '../../utils'
 
 const Splash = ({ navigation }) => {
     useEffect(() => {
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
         fontSize: 23,
         marginTop: 15,
         opacity: 0.8,
-        fontFamily: 'Lato-Regular'
+        fontFamily: fonts.primary[800]
     }
 })
 

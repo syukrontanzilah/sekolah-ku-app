@@ -1,12 +1,14 @@
 import React from 'react'
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import { Header, Input, Button, Gap, } from '../../component'
-import { colors } from '../../utils'
+import { colors, fonts } from '../../utils'
 
-const Register = () => {
+const Register = ({navigation}) => {
     return (
         <View style={styles.page}>
-            <Header />
+            <Header 
+            title='Daftar Akun'
+            onPress={()=> navigation.goBack()}/>
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 style={styles.container}>
@@ -62,7 +64,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 18,
-        fontFamily: 'Lato-Regular',
+        fontFamily: fonts.primary[800],
         marginTop:10,
         //maxWidth: 160,
         color: colors.text.primary,
