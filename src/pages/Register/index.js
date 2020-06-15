@@ -36,7 +36,8 @@ const Register = ({navigation}) => {
                     placeholder='Kata sandi tidak bolah kurang dari 6 karakter' />
                 <Gap height={20} />
 
-                <Button title='Selanjutnya' />
+                <Button title='Selanjutnya'
+                onPress={()=> navigation.navigate('UploadFoto')} />
                 <Gap height={20} />
 
             </ScrollView>
