@@ -1,14 +1,28 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import { GetStarted, Splash, Register, Login, UploadFoto } from '../pages'
+import { GetStarted, Splash, Register, Login, UploadFoto, Home, Pesan, Sekolah } from '../pages'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 
 const Stack = createStackNavigator()
+const Tab = createBottomTabNavigator();
 
 const forFade = ({ current }) => ({
     cardStyle: {
         opacity: current.progress,
     },
 })
+
+const MainApp = () => {
+    return (
+        <Tab.Navigator>
+            <Tab.Screen name='Beranda' component={Home} />
+            <Tab.Screen name='Pesan' component={Pesan} />
+            <Tab.Screen name='Sekolah' component={Sekolah} />
+        </Tab.Navigator>
+    )
+}
+
 
 const Router = () => {
     return (
@@ -38,6 +52,10 @@ const Router = () => {
             <Stack.Screen
                 name='UploadFoto'
                 component={UploadFoto} />
+
+            <Stack.Screen
+                name='MainApp'
+                component={MainApp} />
 
         </Stack.Navigator>
     )

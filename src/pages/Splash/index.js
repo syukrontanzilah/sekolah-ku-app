@@ -15,7 +15,7 @@ const Splash = ({ navigation }) => {
             <View style={{ height: 100, width: 100, opacity: 0.8 }}>
                 <ILLogo />
             </View>
-            <Text style={styles.text}>Sekolah <Text style={{}}>Ku</Text></Text>
+            <Text style={styles.text}>Sekolah<Text style={{}}>Ku</Text></Text>
         </View>
     )
 }

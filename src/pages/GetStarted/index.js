@@ -24,7 +24,7 @@ const GetStarted = ({ navigation }) => {
 
             <View style={{ marginTop: 50 }}>
                 <Button 
-                title='Buat akun baru' 
+                title='Buat akun baru dulu' 
                 onPress={() => navigation.navigate('Register')} />
                 <Gap height={16} />
                 <Button 

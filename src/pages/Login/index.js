@@ -4,7 +4,7 @@ import { ILLogo } from '../../asset'
 import { Input, Link, Button, Gap } from '../../component/atom'
 import { colors, fonts } from '../../utils'
 
-const Login = () => {
+const Login = ({navigation}) => {
     return (
         <View style={styles.page}>
             <View style={{ height: 80, width: 80 }}>
@@ -18,7 +18,9 @@ const Login = () => {
                 <Gap height={10} />
                 <Link title='Lupa kata sandi' size={12} />
                 <Gap height={20} />
-                <Button title='Masuk' />
+                <Button title='Masuk'
+                onPress={()=> navigation.navigate('MainApp')}
+                 />
                 <Gap height={15} />
                 <Link title='Buat akun baru' size={16} align='center' />
             </View>
