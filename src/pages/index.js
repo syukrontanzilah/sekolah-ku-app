@@ -5,7 +5,8 @@ import Register from './Register';
 import UploadFoto from './UploadFoto';
 import Home from './Home';
 import Pesan from './Pesan';
-import Sekolah from './Sekolah'
+import Sekolah from './Sekolah';
+
 
 export {
     Splash,

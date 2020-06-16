@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 18,
         fontFamily: fonts.primary[800],
-        marginTop:10,
+        marginTop:20,
         //maxWidth: 160,
         color: colors.text.primary,
 
