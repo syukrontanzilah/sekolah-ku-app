@@ -6,6 +6,8 @@ import IconHome from './home.svg';
 import IconPesan from './message.svg';
 import IconSekolah from './university.svg';
 import IconNext from './next.svg'
+import IconSendDark from './send.svg';
+import IconSendLight from './send-active.svg'
 
 export {
     IconBackDark,
@@ -15,6 +17,8 @@ export {
     IconHome,
     IconPesan,
     IconSekolah,
-    IconNext
+    IconNext,
+    IconSendDark,
+    IconSendLight
     
 }

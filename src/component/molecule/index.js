@@ -6,6 +6,8 @@ import FavoriteGuru from './FavoriteGuru';
 import InfoSekolah from './InfoSekolah';
 import List from './List';
 import ListBerita from './ListBerita';
+import ChatItem from './ChatItem';
+import InputChat from './InputChat'
 
 
 export {
@@ -16,6 +18,8 @@ export {
     FavoriteGuru,
     InfoSekolah,
     List,
-    ListBerita
+    ListBerita,
+    ChatItem,
+    InputChat
     
 }

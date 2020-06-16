@@ -1,7 +1,9 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import { GetStarted, Splash, Register, Login, UploadFoto, Home, Pesan, 
-    Sekolah, PilihGuru } from '../pages'
+import {
+    GetStarted, Splash, Register, Login, UploadFoto, Home, Pesan,
+    Sekolah, PilihGuru, Chatting
+} from '../pages'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../component';
 
@@ -62,6 +64,10 @@ const Router = () => {
             <Stack.Screen
                 name='PilihGuru'
                 component={PilihGuru} />
+
+            <Stack.Screen
+                name='Chatting'
+                component={Chatting} />
 
         </Stack.Navigator>
     )

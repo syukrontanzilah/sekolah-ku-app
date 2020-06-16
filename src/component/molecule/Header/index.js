@@ -2,8 +2,12 @@ import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { Gap, Button } from '../../atom'
 import { colors, fonts } from '../../../utils'
+import DarkProfile from './DarkProfile'
 
-const Header = ({onPress, title, type}) => {
+const Header = ({onPress, title, type,}) => {
+    if(type === 'dark-profile'){
+        return <DarkProfile onPress = {onPress} />
+    }
     return (
         <View style={styles.container(type)}>
                 <Button type ='icon-only' icon={type === 'dark' ? 'back-light' : 'back-dark'} onPress={onPress} />

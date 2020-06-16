@@ -1,11 +1,13 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { Guru2, IconNext } from '../../../asset'
 import { colors, fonts } from '../../../utils'
 
-const List = ({profile, name, desc, type}) => {
+const List = ({profile, name, desc, type, onPress}) => {
     return (
-        <View style={styles.container}>
+        <TouchableOpacity
+        onPress ={onPress}
+        style={styles.container}>
             <Image
                 style={styles.avatar}
                 source={profile} />
@@ -18,7 +20,7 @@ const List = ({profile, name, desc, type}) => {
             }
            
 
-        </View>
+        </TouchableOpacity>
     )
 }
 

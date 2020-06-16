@@ -1,6 +1,7 @@
 const mainColor = {
     green1: 'darkcyan',
     dark1: '#112340',
+    dark2: '#8092af',
     grey1 : '#7d8797',
     grey2 : '#e9e9e9'
 
@@ -14,6 +15,7 @@ export const colors ={
     text: {
         primary: mainColor.dark1,
         secondary: mainColor.grey1,
+        subtitle : mainColor.dark2,
     },
     button: {
         primary: {
