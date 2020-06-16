@@ -16,9 +16,9 @@ const Chatting = ({ navigation }) => {
                 showsVerticalScrollIndicator={false}
                 style={styles.content}>
                 <Text style={styles.chatDate}>Senin 27 Mei 2020</Text>
+                <ChatItem isMe/>
                 <ChatItem />
-                <ChatItem />
-                <ChatItem />
+                <ChatItem isMe/>
 
 
                 <Gap height={1000} />
