@@ -1,11 +1,11 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { News1 } from '../../../asset'
 import { fonts, colors } from '../../../utils'
 
 const ListBerita = ({image, title, desc}) => {
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container}>
             <Image
                 source={image}
                 style={styles.image} />
@@ -14,7 +14,7 @@ const ListBerita = ({image, title, desc}) => {
                 <Text style={styles.desc}>{desc}</Text>
             </View>
 
-        </View>
+        </TouchableOpacity>
     )
 }
 

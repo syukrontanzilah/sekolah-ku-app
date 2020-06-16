@@ -38,6 +38,6 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: fonts.primary[600],
-        color: colors.secondary
+        color: colors.white
     }
 })

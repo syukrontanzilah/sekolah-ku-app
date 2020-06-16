@@ -1,18 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import { List } from '../../component'
 import { fonts, colors } from '../../utils'
+import { Guru1, Guru2 } from '../../asset'
 
 const Pesan = () => {
+    const [guru] = useState([
+        {
+            id: 1,
+            profile: Guru1,
+            name: 'Prilli Latuconsina SPd.',
+            desc: 'Baik bu guru...'
+        },
+        {
+            id: 2,
+            profile: Guru2,
+            name: 'Alissa Soebandono SPd.',
+            desc: 'wah siap bu guru...'
+        },
+        {
+            id: 3,
+            profile: Guru2,
+            name: 'Siti Saadah S Ag..',
+            desc: 'Ntapppsss...'
+        }
+    ])
     return (
         <View style={styles.page}>
 
             <Text style={styles.pesan}>Pesan</Text>
             <ScrollView
-            showsVerticalScrollIndicator={false}>
-                <List />
-                <List />
-                <List />
+                showsVerticalScrollIndicator={false}>
+                {
+                    guru.map(guru => {
+                        return <List 
+                        key ={guru.id}
+                        profile={guru.profile}
+                        name= {guru.name}
+                        desc={guru.desc} />
+                    })
+                }
             </ScrollView>
 
 
@@ -24,10 +51,10 @@ export default Pesan
 
 const styles = StyleSheet.create({
     page: {
-       padding: 16,
-       paddingTop:10
+        padding: 16,
+        paddingTop: 10
     },
-    pesan :{
+    pesan: {
         marginBottom: 16,
         fontSize: 25,
         fontFamily: fonts.primary[800],

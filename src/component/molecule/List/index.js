@@ -3,15 +3,15 @@ import { StyleSheet, Text, View, Image } from 'react-native'
 import { Guru2 } from '../../../asset'
 import { colors, fonts } from '../../../utils'
 
-const List = () => {
+const List = ({profile, name, desc}) => {
     return (
         <View style={styles.container}>
             <Image
                 style={styles.avatar}
-                source={Guru2} />
+                source={profile} />
             <View>
-                <Text style={styles.name}>Prilli Latuconsina SPd.</Text>
-                <Text style={styles.desc}>Terima kasih ya ibu guru..</Text>
+                <Text style={styles.name}>{name}</Text>
+                <Text style={styles.desc}>{desc}</Text>
             </View>
 
         </View>

@@ -71,7 +71,7 @@ const Home = () => {
 
                 <Gap height={10} />
 
-                <Text style={styles.textDesc}>Info Sekolah</Text>
+                <Text style={styles.textDesc}>Profile Sekolah</Text>
                 <View style={{ paddingHorizontal: 16, paddingVertical: 15 }}>
                   <InfoSekolah/>
                   <InfoSekolah/>
