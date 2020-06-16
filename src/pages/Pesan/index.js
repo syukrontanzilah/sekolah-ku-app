@@ -24,7 +24,8 @@ export default Pesan
 
 const styles = StyleSheet.create({
     page: {
-       padding: 16
+       padding: 16,
+       paddingTop:10
     },
     pesan :{
         marginBottom: 16,

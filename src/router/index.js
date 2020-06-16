@@ -28,7 +28,7 @@ const MainApp = () => {
 const Router = () => {
     return (
         <Stack.Navigator
-            initialRouteName='MainApp'
+            initialRouteName='Splash'
             screenOptions={{
                 headerShown: false,
                 cardStyleInterpolator: forFade

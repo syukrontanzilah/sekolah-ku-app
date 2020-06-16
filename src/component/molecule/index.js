@@ -4,7 +4,9 @@ import HomeProfile from './HomeProfile';
 import CategoryGuru from './CategoryGuru';
 import FavoriteGuru from './FavoriteGuru';
 import InfoSekolah from './InfoSekolah';
-import List from './List'
+import List from './List';
+import ListBerita from './ListBerita';
+
 
 export {
     Header,
@@ -13,6 +15,7 @@ export {
     CategoryGuru,
     FavoriteGuru,
     InfoSekolah,
-    List
+    List,
+    ListBerita
     
 }
