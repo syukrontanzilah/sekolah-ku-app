@@ -1,6 +1,7 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import { GetStarted, Splash, Register, Login, UploadFoto, Home, Pesan, Sekolah } from '../pages'
+import { GetStarted, Splash, Register, Login, UploadFoto, Home, Pesan, 
+    Sekolah, PilihGuru } from '../pages'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../component';
 
@@ -16,7 +17,7 @@ const forFade = ({ current }) => ({
 
 const MainApp = () => {
     return (
-        <Tab.Navigator tabBar={props => <BottomNavigator {...props}/>}>
+        <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
             <Tab.Screen name='Beranda' component={Home} />
             <Tab.Screen name='Pesan' component={Pesan} />
             <Tab.Screen name='Sekolah' component={Sekolah} />
@@ -57,6 +58,10 @@ const Router = () => {
             <Stack.Screen
                 name='MainApp'
                 component={MainApp} />
+
+            <Stack.Screen
+                name='PilihGuru'
+                component={PilihGuru} />
 
         </Stack.Navigator>
     )

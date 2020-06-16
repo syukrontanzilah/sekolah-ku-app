@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { ILMatematika, ILLogo, Agama, IPA, Bahasa, IPS, Sport, Seni, Komputer } from '../../../asset'
 import { fonts, colors } from '../../../utils'
 
-const CategoryGuru = ({category}) => {
+const CategoryGuru = ({category, onPress}) => {
     const Icon = () => {
         if(category=== 'Matematika'){
             return <ILMatematika/>
@@ -32,7 +32,8 @@ const CategoryGuru = ({category}) => {
         return <ILMatematika/>
     }
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container}
+        onPress={onPress}>
             <View style={{ height: 50, width: 50 }}>
                 <Icon />
             </View>

@@ -5,7 +5,7 @@ import { fonts, colors } from '../../utils'
 import { JSONCategoryGuru } from '../../asset'
 
 
-const Home = () => {
+const Home = ({navigation}) => {
     return (
         <View style={styles.page}>
             {/* <View style={{ position: 'absolute', top: 16, right: 16 }}>
@@ -53,6 +53,7 @@ const Home = () => {
                         {
                             JSONCategoryGuru.data.map(item => {
                                 return <CategoryGuru 
+                                onPress={()=>navigation.navigate('PilihGuru')}
                                 key={item.id}
                                 category ={item.category}/>
                             })
@@ -100,13 +101,15 @@ const styles = StyleSheet.create({
     sekolah: {
         fontFamily: fonts.primary[800],
         fontSize: 20,
-        color: colors.secondary
+        color: colors.secondary,
+      
     },
     kota: {
         fontFamily: fonts.primary[600],
         fontSize: 16,
         color: colors.border,
-        textAlign: 'right'
+        textAlign: 'right',
+        opacity: 0.8
     },
     welcome: {
 

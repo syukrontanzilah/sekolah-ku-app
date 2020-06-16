@@ -6,6 +6,7 @@ import UploadFoto from './UploadFoto';
 import Home from './Home';
 import Pesan from './Pesan';
 import Sekolah from './Sekolah';
+import PilihGuru from './PilihGuru'
 
 
 export {
@@ -17,5 +18,6 @@ export {
     Sekolah,
     Home,
     Pesan,
+    PilihGuru
     
 }

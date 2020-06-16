@@ -1,18 +1,22 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
-import { Guru2 } from '../../../asset'
+import { Guru2, IconNext } from '../../../asset'
 import { colors, fonts } from '../../../utils'
 
-const List = ({profile, name, desc}) => {
+const List = ({profile, name, desc, type}) => {
     return (
         <View style={styles.container}>
             <Image
                 style={styles.avatar}
                 source={profile} />
-            <View>
+            <View style={{flex:1}}>
                 <Text style={styles.name}>{name}</Text>
                 <Text style={styles.desc}>{desc}</Text>
             </View>
+            {
+                type === 'next' && <IconNext/>
+            }
+           
 
         </View>
     )
@@ -26,7 +30,8 @@ const styles = StyleSheet.create({
         borderBottomColor: colors.border,
         borderBottomWidth: 1,
         paddingVertical: 10,
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'space-between'
 
     },
     avatar: {

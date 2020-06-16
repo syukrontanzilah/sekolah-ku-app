@@ -4,7 +4,8 @@ import IconPlus from './plus.svg';
 import IconClose from './close-button.svg'
 import IconHome from './home.svg';
 import IconPesan from './message.svg';
-import IconSekolah from './university.svg'
+import IconSekolah from './university.svg';
+import IconNext from './next.svg'
 
 export {
     IconBackDark,
@@ -14,5 +15,6 @@ export {
     IconHome,
     IconPesan,
     IconSekolah,
+    IconNext
     
 }
