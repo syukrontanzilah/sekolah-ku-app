@@ -1,0 +1,41 @@
+{
+    "data" : [
+        {
+            "id" : 1,
+            "category": "Bahasa"
+        },
+        {
+            "id" : 2,
+            "category": "IPA"
+        },
+        {
+            "id" : 3,
+            "category": "IPS"
+        },
+        {
+            "id" : 4,
+            "category": "Matematika"
+        },
+        {
+            "id" : 5,
+            "category": "Agama"
+        },
+        {
+            "id" : 6,
+            "category": "Seni"
+        },
+        {
+            "id" : 7,
+            "category": "Kesehatan"
+        },
+        {
+            "id" : 8,
+            "category": "Komputer"
+        },
+        {
+            "id" : 9,
+            "category": "Ekskul"
+        }
+
+    ]
+}

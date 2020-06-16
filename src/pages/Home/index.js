@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native'
 import { HomeProfile, Gap, CategoryGuru, FavoriteGuru, InfoSekolah } from '../../component'
 import { fonts, colors } from '../../utils'
+import { JSONCategoryGuru } from '../../asset'
 
 
 const Home = () => {
@@ -49,12 +50,13 @@ const Home = () => {
                     <ScrollView horizontal
                         showsHorizontalScrollIndicator={false}>
                         <Gap width={16} />
-                        <CategoryGuru />
-                        <CategoryGuru />
-                        <CategoryGuru />
-                        <CategoryGuru />
-                        <CategoryGuru />
-                        <CategoryGuru />
+                        {
+                            JSONCategoryGuru.data.map(item => {
+                                return <CategoryGuru 
+                                key={item.id}
+                                category ={item.category}/>
+                            })
+                        }
                         <Gap width={6} />
 
                     </ScrollView>
