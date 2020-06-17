@@ -28,10 +28,6 @@ const Register = ({navigation}) => {
                     placeholder='Contoh: andi123@gmail.com' />
                 <Gap height={20} />
 
-                <Input label='No Telephone'
-                    placeholder='Contoh: 0123456789'
-                />
-                <Gap height={20} />
 
                 <Input label='Kata Sandi'
                     placeholder='Kata sandi tidak bolah kurang dari 6 karakter' />
