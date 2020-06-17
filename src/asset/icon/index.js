@@ -8,6 +8,10 @@ import IconSekolah from './university.svg';
 import IconNext from './next.svg'
 import IconSendDark from './send.svg';
 import IconSendLight from './send-active.svg'
+import IconEdit from './edit.svg';
+import IconLanguage from './language.svg';
+import IconExit from './exit.svg';
+import IconHelp from './help.svg';
 
 export {
     IconBackDark,
@@ -19,6 +23,10 @@ export {
     IconSekolah,
     IconNext,
     IconSendDark,
-    IconSendLight
+    IconSendLight,
+    IconEdit,
+    IconLanguage,
+    IconExit,
+    IconHelp,
     
 }

@@ -7,7 +7,8 @@ import InfoSekolah from './InfoSekolah';
 import List from './List';
 import ListBerita from './ListBerita';
 import ChatItem from './ChatItem';
-import InputChat from './InputChat'
+import InputChat from './InputChat';
+import Profile from './Profile'
 
 
 export {
@@ -20,6 +21,7 @@ export {
     List,
     ListBerita,
     ChatItem,
-    InputChat
+    InputChat,
+    Profile
     
 }

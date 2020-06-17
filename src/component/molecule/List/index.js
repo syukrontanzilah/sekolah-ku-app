@@ -1,17 +1,35 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-import { Guru2, IconNext } from '../../../asset'
+import { Guru2, IconNext, IconEdit, IconLanguage, IconHelp, IconExit } from '../../../asset'
 import { colors, fonts } from '../../../utils'
 
-const List = ({profile, name, desc, type, onPress}) => {
+const List = ({profile, name, desc, type, onPress, icon}) => {
+    const Icon = () => {
+        if(icon === 'edit-profile'){
+            return <IconEdit/>
+        }
+        if(icon === 'language'){
+            return <IconLanguage/>
+        }
+        if(icon === 'help'){
+            return <IconHelp/>
+        }
+        if(icon === 'exit'){
+            return <IconExit />
+        }
+        return <IconEdit/>
+    }
     return (
         <TouchableOpacity
         onPress ={onPress}
         style={styles.container}>
-            <Image
+            {
+                icon ? <Icon/> : <Image
                 style={styles.avatar}
                 source={profile} />
-            <View style={{flex:1}}>
+            }
+           
+            <View style={{flex:1, marginLeft:14}}>
                 <Text style={styles.name}>{name}</Text>
                 <Text style={styles.desc}>{desc}</Text>
             </View>
@@ -40,7 +58,6 @@ const styles = StyleSheet.create({
         height: 50,
         width: 50,
         borderRadius: 50 / 2,
-        marginRight: 10
     },
     name: {
         fontSize: 17,

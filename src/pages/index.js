@@ -7,7 +7,8 @@ import Home from './Home';
 import Pesan from './Pesan';
 import Sekolah from './Sekolah';
 import PilihGuru from './PilihGuru';
-import Chatting from './Chatting'
+import Chatting from './Chatting';
+import UserProfile from './UserProfile'
 
 
 export {
@@ -20,6 +21,7 @@ export {
     Home,
     Pesan,
     PilihGuru,
-    Chatting
+    Chatting,
+    UserProfile,
     
 }

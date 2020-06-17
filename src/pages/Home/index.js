@@ -23,7 +23,7 @@ const Home = ({navigation}) => {
                     paddingVertical: 5
                 }}>
                     <View style={{ flex: 1 }}>
-                        <HomeProfile />
+                        <HomeProfile onPress={()=> navigation.navigate('UserProfile')}/>
                     </View>
 
                     <View style={{

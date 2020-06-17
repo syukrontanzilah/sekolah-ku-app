@@ -1,11 +1,12 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { ILLogo, ILNullPhoto, DummyUser } from '../../../asset'
 import { fonts, colors } from '../../../utils'
 
-const HomeProfile = () => {
+const HomeProfile = ({onPress}) => {
     return (
-        <View>
+        <TouchableOpacity
+        onPress={onPress}>
             <View style={styles.imageWrapper}>
                 <Image
                     // source={ILNullPhoto} 
@@ -16,7 +17,7 @@ const HomeProfile = () => {
                 <Text style={styles.text}>Muhammad Alwi Assegaff</Text>
                 {/* <Text style={{textAlign: 'right'}}>Kelas 7F</Text> */}
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 
