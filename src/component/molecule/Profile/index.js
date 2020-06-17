@@ -1,20 +1,28 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
-import { DummyUser } from '../../../asset'
+import { DummyUser, IconRemove } from '../../../asset'
 import { colors, fonts } from '../../../utils'
 import { Gap } from '../../atom'
 
-const Profile = () => {
+const Profile = ({ name, desc }) => {
     return (
         <View style={styles.container}>
             <View style={styles.borderProfile}>
                 <Image
                     style={styles.avatar}
                     source={DummyUser} />
+                    <IconRemove style={styles.iconRemove}/>
             </View>
-            <Gap height={10}/>
-            <Text style={styles.name}>Alwi Assegaf</Text>
-            <Text style={styles.desc}>Kelas 7A</Text>
+            <Gap height={15} />
+            {
+                name && (
+                    <View>
+                        <Text style={styles.name}>{name}</Text>
+                        <Text style={styles.desc}>{desc}</Text>
+                    </View>
+                )
+            }
+
 
 
         </View>
@@ -45,12 +53,22 @@ const styles = StyleSheet.create({
     },
     name: {
         fontFamily: fonts.primary[800],
-        fontSize:20,
-        color: colors.secondary
+        fontSize: 20,
+        color: colors.secondary,
+        textAlign: 'center'
     },
     desc: {
         fontFamily: fonts.primary[800],
-        fontSize:18,
-        color: colors.text.secondary
+        fontSize: 18,
+        color: colors.text.secondary,
+        textAlign: 'center'
+    },
+    iconRemove :{
+        backgroundColor: 'white',
+        borderRadius: 100,
+        position: 'absolute',
+        bottom :10,
+        right:0
+
     }
 })

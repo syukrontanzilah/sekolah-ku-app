@@ -1,7 +1,7 @@
 import IconBackDark from './back.svg';
 import IconBackWhite from './backwhite.svg';
-import IconPlus from './plus.svg';
-import IconClose from './close-button.svg'
+import IconAdd from './plus.svg';
+import IconRemove from './close-button.svg'
 import IconHome from './home.svg';
 import IconPesan from './message.svg';
 import IconSekolah from './university.svg';
@@ -16,8 +16,8 @@ import IconHelp from './help.svg';
 export {
     IconBackDark,
     IconBackWhite,
-    IconPlus,
-    IconClose,
+    IconAdd,
+    IconRemove,
     IconHome,
     IconPesan,
     IconSekolah,

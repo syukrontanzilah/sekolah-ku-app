@@ -8,7 +8,8 @@ import Pesan from './Pesan';
 import Sekolah from './Sekolah';
 import PilihGuru from './PilihGuru';
 import Chatting from './Chatting';
-import UserProfile from './UserProfile'
+import UserProfile from './UserProfile';
+import EditProfile from './EditProfile'
 
 
 export {
@@ -23,5 +24,6 @@ export {
     PilihGuru,
     Chatting,
     UserProfile,
+    EditProfile,
     
 }

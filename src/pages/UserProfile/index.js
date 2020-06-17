@@ -3,18 +3,19 @@ import { StyleSheet, Text, View } from 'react-native'
 import { Header, Profile, List, Gap } from '../../component'
 import { colors } from '../../utils'
 
-const UserProfile = () => {
+const UserProfile = ({navigation}) => {
     return (
         <View style={styles.page}>
-            <Header title='Profile Ku' />
-            <Gap height={20}/>
+            <Header title='Profile Ku' onPress={()=> navigation.goBack()} />
+            <Gap height={10}/>
 
-            <Profile />
+            <Profile name = 'Alwi Assegaff' desc = '8A' />
 
             <Gap height={20}/>
 
             <View style={{paddingHorizontal:20}}>
                 <List
+                onPress ={()=> navigation.navigate('EditProfile')}
                     name='Edit Profile'
                     desc='Kamu bisa merubah profile mu disini'
                     type='next' icon='edit-profile' />

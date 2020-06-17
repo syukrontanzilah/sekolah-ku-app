@@ -2,7 +2,7 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import {
     GetStarted, Splash, Register, Login, UploadFoto, Home, Pesan,
-    Sekolah, PilihGuru, Chatting, UserProfile
+    Sekolah, PilihGuru, Chatting, UserProfile, EditProfile
 } from '../pages'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../component';
@@ -72,6 +72,10 @@ const Router = () => {
             <Stack.Screen
                 name='UserProfile'
                 component={UserProfile} />
+
+            <Stack.Screen
+                name='EditProfile'
+                component={EditProfile} />
 
         </Stack.Navigator>
     )
