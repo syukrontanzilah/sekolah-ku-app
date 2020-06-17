@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         color: colors.text.primary,
         flex:1,
         marginRight:8,
-        maxHeight:55
+        maxHeight:50
 
 
     }

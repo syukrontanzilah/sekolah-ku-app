@@ -19,10 +19,12 @@ const Login = ({navigation}) => {
                 <Link title='Lupa kata sandi' size={12} />
                 <Gap height={20} />
                 <Button title='Masuk'
-                onPress={()=> navigation.navigate('MainApp')}
+                onPress={()=> navigation.replace('MainApp')}
                  />
                 <Gap height={15} />
-                <Link title='Buat akun baru' size={16} align='center' />
+                <Link 
+                onPress={()=> navigation.navigate('Register')}
+                title='Buat akun baru' size={16} align='center' />
             </View>
         </View>
     )

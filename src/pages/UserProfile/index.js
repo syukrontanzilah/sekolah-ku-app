@@ -6,7 +6,8 @@ import { colors } from '../../utils'
 const UserProfile = ({navigation}) => {
     return (
         <View style={styles.page}>
-            <Header title='Profile Ku' onPress={()=> navigation.goBack()} />
+            <Header title='Profile Ku' 
+            onPress={()=> navigation.goBack()} />
             <Gap height={10}/>
 
             <Profile name = 'Alwi Assegaff' desc = '8A' />

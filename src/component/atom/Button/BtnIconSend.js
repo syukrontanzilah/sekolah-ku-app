@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         backgroundColor: disable ? colors.border : 'darkcyan', 
         justifyContent:'center',
         alignItems:'center',
-        width:55, height:55,
+        width:50, height:50,
         borderRadius: 10, 
     }),
 })

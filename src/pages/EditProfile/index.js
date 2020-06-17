@@ -14,7 +14,7 @@ const EditProfile = ({ navigation }) => {
                 style={{ flex: 1 }}>
                 <Gap height={10} />
 
-                <Profile />
+                <Profile isRemove />
                 <Gap height={20} />
                 <View style={{paddingHorizontal:40}}>
                     <Input label='Nama Lengkap' />
@@ -32,7 +32,9 @@ const EditProfile = ({ navigation }) => {
                     <Input label='Kata Sandi' />
                     <Gap height={20} />
 
-                    <Button title = 'Simpan Profile'/>
+                    <Button
+                    onPress = {()=>navigation.goBack('UserProfile')}
+                    title = 'Simpan Profile'/>
                     <Gap height={20} />
 
                 </View>

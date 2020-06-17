@@ -2,14 +2,15 @@ import Splash from './Splash';
 import GetStarted from './GetStarted';
 import Login from './Login';
 import Register from './Register';
-import UploadFoto from './UploadFoto';
+import UploadPhoto from './UploadPhoto';
 import Home from './Home';
 import Pesan from './Pesan';
 import Sekolah from './Sekolah';
 import PilihGuru from './PilihGuru';
 import Chatting from './Chatting';
 import UserProfile from './UserProfile';
-import EditProfile from './EditProfile'
+import EditProfile from './EditProfile';
+import GuruProfile from './GuruProfile'
 
 
 export {
@@ -17,7 +18,7 @@ export {
     GetStarted,
     Login,
     Register,
-    UploadFoto,
+    UploadPhoto,
     Sekolah,
     Home,
     Pesan,
@@ -25,5 +26,6 @@ export {
     Chatting,
     UserProfile,
     EditProfile,
+    GuruProfile
     
 }

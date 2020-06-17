@@ -1,20 +1,21 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
-import { Guru1 } from '../../../asset'
-import { fonts, colors } from '../../../utils'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { colors, fonts } from '../../../utils'
 
-const FavoriteGuru = () => {
+const FavoriteGuru = ({onPress, name, desc, avatar}) => {
     return (
-        <View style={styles.container}>
-            <Image source={Guru1} style={styles.avatar} />
+        <TouchableOpacity 
+        onPress={onPress}
+        style={styles.container}>
+            <Image source={avatar} style={styles.avatar} />
 
             <View style={{justifyContent:'center', flex:1}}>
-                <Text style={styles.name}>Hafidzah Karimah S.Pd</Text>
-                <Text style={styles.desc}>Bahasa Indonesia</Text>
+                <Text style={styles.name}>{name}</Text>
+                <Text style={styles.desc}>{desc}</Text>
             </View>
 
 
-        </View>
+        </TouchableOpacity>
     )
 }
 

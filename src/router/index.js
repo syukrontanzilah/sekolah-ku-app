@@ -1,8 +1,9 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import {
-    GetStarted, Splash, Register, Login, UploadFoto, Home, Pesan,
-    Sekolah, PilihGuru, Chatting, UserProfile, EditProfile
+    GetStarted, Splash, Register, Login, UploadPhoto, Home, Pesan,
+    Sekolah, PilihGuru, Chatting, UserProfile, EditProfile, 
+    GuruProfile
 } from '../pages'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../component';
@@ -31,7 +32,7 @@ const MainApp = () => {
 const Router = () => {
     return (
         <Stack.Navigator
-            initialRouteName='MainApp'
+            initialRouteName='Splash'
             screenOptions={{
                 headerShown: false,
                 cardStyleInterpolator: forFade
@@ -54,8 +55,8 @@ const Router = () => {
                 component={Login} />
 
             <Stack.Screen
-                name='UploadFoto'
-                component={UploadFoto} />
+                name='UploadPhoto'
+                component={UploadPhoto} />
 
             <Stack.Screen
                 name='MainApp'
@@ -76,6 +77,10 @@ const Router = () => {
             <Stack.Screen
                 name='EditProfile'
                 component={EditProfile} />
+
+            <Stack.Screen
+                name='GuruProfile'
+                component={GuruProfile} />
 
         </Stack.Navigator>
     )

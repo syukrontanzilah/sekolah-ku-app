@@ -8,7 +8,8 @@ const Register = ({navigation}) => {
         <View style={styles.page}>
             <Header 
             title='Daftar Akun'
-            onPress={()=> navigation.goBack()}/>
+           onPress={()=> navigation.goBack()}
+            />
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 style={styles.container}>
@@ -36,8 +37,9 @@ const Register = ({navigation}) => {
                     placeholder='Kata sandi tidak bolah kurang dari 6 karakter' />
                 <Gap height={20} />
 
-                <Button title='Selanjutnya'
-                onPress={()=> navigation.navigate('UploadFoto')} />
+                <Button 
+                onPress={()=> navigation.navigate('UploadPhoto')}
+                title='Selanjutnya' />
                 <Gap height={20} />
 
             </ScrollView>

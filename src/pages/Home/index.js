@@ -1,8 +1,8 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native'
-import { HomeProfile, Gap, CategoryGuru, FavoriteGuru, InfoSekolah } from '../../component'
-import { fonts, colors } from '../../utils'
-import { JSONCategoryGuru } from '../../asset'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Guru1, Guru2, JSONCategoryGuru } from '../../asset'
+import { CategoryGuru, FavoriteGuru, Gap, HomeProfile, InfoSekolah } from '../../component'
+import { colors, fonts } from '../../utils'
 
 
 const Home = ({navigation}) => {
@@ -67,9 +67,21 @@ const Home = ({navigation}) => {
                 <Gap height={15} />
                 <Text style={styles.textDesc}>Random Guru</Text>
                 <View style={{ paddingHorizontal: 16, paddingVertical: 15 }}>
-                    <FavoriteGuru />
-                    <FavoriteGuru />
-                    <FavoriteGuru />
+                    <FavoriteGuru 
+                    avatar={Guru1}
+                    name='Alissa Subandono'
+                    desc = 'Bahasa Indonesia'
+                    onPress = {()=>navigation.navigate('GuruProfile')}/>
+                   
+                    <FavoriteGuru
+                    avatar ={Guru2}
+                    name= 'Jayanti atmaja'
+                    desc='Bahasa Jepang' />
+
+                    <FavoriteGuru
+                    avatar={Guru2}
+                    name='Julian ferdinand'
+                    desc='Bahasa mandarin' />
                 </View>
 
                 <Gap height={10} />

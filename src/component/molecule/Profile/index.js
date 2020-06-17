@@ -4,14 +4,17 @@ import { DummyUser, IconRemove } from '../../../asset'
 import { colors, fonts } from '../../../utils'
 import { Gap } from '../../atom'
 
-const Profile = ({ name, desc }) => {
+const Profile = ({ name, desc, isRemove }) => {
     return (
         <View style={styles.container}>
             <View style={styles.borderProfile}>
                 <Image
                     style={styles.avatar}
                     source={DummyUser} />
-                    <IconRemove style={styles.iconRemove}/>
+                    {
+                        isRemove &&   <IconRemove style={styles.iconRemove}/>
+                    }
+                  
             </View>
             <Gap height={15} />
             {
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     desc: {
-        fontFamily: fonts.primary[800],
+        fontFamily: fonts.primary[600],
         fontSize: 18,
         color: colors.text.secondary,
         textAlign: 'center'

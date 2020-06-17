@@ -4,7 +4,7 @@ import { List } from '../../component'
 import { fonts, colors } from '../../utils'
 import { Guru1, Guru2 } from '../../asset'
 
-const Pesan = () => {
+const Pesan = ({navigation}) => {
     const [guru] = useState([
         {
             id: 1,
@@ -33,11 +33,15 @@ const Pesan = () => {
                 showsVerticalScrollIndicator={false}>
                 {
                     guru.map(guru => {
-                        return <List 
+                        return (
+                             <List 
                         key ={guru.id}
                         profile={guru.profile}
                         name= {guru.name}
-                        desc={guru.desc} />
+                        desc={guru.desc}
+                        onPress={()=> navigation.navigate('Chatting')} />
+                        )
+                       
                     })
                 }
             </ScrollView>
