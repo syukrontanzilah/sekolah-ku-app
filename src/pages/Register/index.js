@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import { Header, Input, Button, Gap, } from '../../component'
-import { colors, fonts } from '../../utils'
+import { colors, fonts, useForm } from '../../utils'
 
 const Register = ({ navigation }) => {
-    const [fullName, setFullName] = useState('');
-    const [kelas, setKelas] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
+    const [form, setForm] = useForm({
+        fullName: '',
+        kelas: '',
+        email: '',
+        password: '',
+    })
 
     const onContinue = () => {
 
@@ -25,28 +27,28 @@ const Register = ({ navigation }) => {
                 <Text style={styles.text}>Isi Form data berikut dengan lengkap sesuai instruksi</Text>
                 <Gap height={20} />
                 <Input label='Nama Lengkap'
-                    value={fullName}
-                    onChangeText={(value) => setFullName(value)}
+                    value={form.fullName}
+                    onChangeText={(value) => setForm('fullName', value)}
                     placeholder='Contoh: Andi Pratama' />
                 <Gap height={20} />
 
                 <Input label='Kelas'
-                    value={kelas}
-                    onChangeText={(value) => setKelas(value)}
+                    value={form.kelas}
+                    onChangeText={(value) => setForm('kelas',value)}
                     placeholder='Contoh: 7A' />
                 <Gap height={20} />
 
 
                 <Input label='Alamat Email'
-                    value={email}
-                    onChangeText={(value) => setEmail(value)}
+                    value={form.email}
+                    onChangeText={(value) => setForm('email',value)}
                     placeholder='Contoh: andi123@gmail.com' />
                 <Gap height={20} />
 
 
                 <Input label='Kata Sandi'
-                    value={password}
-                    onChangeText={(value) => setPassword(value)}
+                    value={form.password}
+                    onChangeText={(value) => setForm('password',value)}
                     secureTextEntry
                     placeholder='Kata sandi tidak bolah kurang dari 6 karakter' />
                 <Gap height={20} />
