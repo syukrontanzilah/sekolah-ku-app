@@ -9,7 +9,8 @@ import ListBerita from './ListBerita';
 import ChatItem from './ChatItem';
 import InputChat from './InputChat';
 import Profile from './Profile';
-import ProfileItem from './ProfileItem'
+import ProfileItem from './ProfileItem';
+import Loading from './Loading'
 
 
 export {
@@ -24,6 +25,7 @@ export {
     ChatItem,
     InputChat,
     Profile,
-    ProfileItem
+    ProfileItem,
+    Loading
     
 }
