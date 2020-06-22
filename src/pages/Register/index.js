@@ -20,6 +20,7 @@ const Register = ({ navigation }) => {
             .createUserWithEmailAndPassword(form.email, form.password)
             .then((success) => {
                 setLoading(false)
+                setForm('reset');
             })
             .catch((error) => {
                 const errorMessage = error.message;
