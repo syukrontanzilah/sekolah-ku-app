@@ -16,15 +16,22 @@ const Register = ({ navigation }) => {
     const [loading, setLoading] = useState(false)
 
     const onContinue = () => {
-
-
-
         setLoading(true);
         Fire.auth()
             .createUserWithEmailAndPassword(form.email, form.password)
             .then((success) => {
                 setLoading(false)
                 setForm('reset');
+
+                const data = {
+                    fullName: form.fullName,
+                    kelas: form.kelas,
+                    email: form.email,
+                }
+                Fire
+                .database()
+                .ref('users/' +success.user.uid+ '/')
+                .set(data)
             })
             .catch((error) => {
                 const errorMessage = error.message;
