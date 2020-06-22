@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import { Header, Input, Button, Gap, Loading, } from '../../component'
 import { colors, fonts, useForm } from '../../utils';
-import { Fire } from '../../config'
+import { Fire } from '../../config';
+import { showMessage, hideMessage } from "react-native-flash-message";
 
 const Register = ({ navigation }) => {
     const [form, setForm] = useForm({
@@ -15,6 +16,9 @@ const Register = ({ navigation }) => {
     const [loading, setLoading] = useState(false)
 
     const onContinue = () => {
+
+
+
         setLoading(true);
         Fire.auth()
             .createUserWithEmailAndPassword(form.email, form.password)
@@ -24,8 +28,12 @@ const Register = ({ navigation }) => {
             })
             .catch((error) => {
                 const errorMessage = error.message;
-                setLoading(fase)
-                // ...
+                setLoading(false)
+                showMessage({
+                    message: errorMessage,
+                    type : 'default',
+                    backgroundColor: 'salmon',
+                })
             });
 
         // navigation.navigate('UploadPhoto')
