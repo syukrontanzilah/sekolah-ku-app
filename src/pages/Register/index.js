@@ -28,6 +28,7 @@ const Register = ({ navigation }) => {
                     fullName: form.fullName,
                     kelas: form.kelas,
                     email: form.email,
+                    uid: success.user.uid,
                 }
                 Fire
                     .database()
