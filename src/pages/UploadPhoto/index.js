@@ -13,7 +13,8 @@ const UploadPhoto = ({ navigation, route }) => {
     const [hasPhoto, setHasPhoto] = useState(false)
     const [photo, setPhoto] = useState(ILNullPhoto)
     const getImage = () => {
-        ImagePicker.launchImageLibrary({ quality: 0.8, maxWidth: 250, maxHeight: 250 }, (response) => {
+        ImagePicker.launchImageLibrary(
+            { quality: 0.8, maxWidth: 250, maxHeight: 250 }, (response) => {
             if (response.didCancel || response.error) {
                 showMessage({
                     message: 'Oops.. Kayaknya kamu tidak memilih fotonya',

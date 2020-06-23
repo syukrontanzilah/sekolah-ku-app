@@ -1,21 +1,32 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { DummyUser, IconRemove } from '../../../asset'
 import { colors, fonts } from '../../../utils'
 import { Gap } from '../../atom'
 
-const Profile = ({ name, desc, isRemove }) => {
+const Profile = ({ name, desc, isRemove, photo, onPress }) => {
     return (
         <View style={styles.container}>
-            <View style={styles.borderProfile}>
-                <Image
-                    style={styles.avatar}
-                    source={DummyUser} />
-                    {
-                        isRemove &&   <IconRemove style={styles.iconRemove}/>
-                    }
-                  
-            </View>
+            {!isRemove && (
+                <View style={styles.borderProfile}>
+                    <Image
+                        style={styles.avatar}
+                        source={photo} />
+                    {isRemove && <IconRemove style={styles.iconRemove} />}
+                </View>
+            )}
+
+            {isRemove && (
+                <TouchableOpacity
+                    onPress={onPress}
+                    style={styles.borderProfile}>
+                    <Image
+                        style={styles.avatar}
+                        source={photo} />
+                    {isRemove && <IconRemove style={styles.iconRemove} />}
+                </TouchableOpacity>
+            )}
+
             <Gap height={15} />
             {
                 name && (
@@ -66,12 +77,12 @@ const styles = StyleSheet.create({
         color: colors.text.secondary,
         textAlign: 'center'
     },
-    iconRemove :{
+    iconRemove: {
         backgroundColor: 'white',
         borderRadius: 100,
         position: 'absolute',
-        bottom :10,
-        right:0
+        bottom: 10,
+        right: 0
 
     }
 })
