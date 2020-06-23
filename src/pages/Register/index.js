@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
-import { Header, Input, Button, Gap, Loading, } from '../../component'
-import { colors, fonts, useForm, storeData, getData } from '../../utils';
+import React, { useState } from 'react';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { showMessage } from "react-native-flash-message";
+import { Button, Gap, Header, Input, Loading } from '../../component';
 import { Fire } from '../../config';
-import { showMessage, hideMessage } from "react-native-flash-message";
-import AsyncStorage from '@react-native-community/async-storage';
+import { colors, fonts, storeData, useForm } from '../../utils';
 
 const Register = ({ navigation }) => {
     const [form, setForm] = useForm({
@@ -36,7 +35,7 @@ const Register = ({ navigation }) => {
                     .set(data)
 
                 storeData('user', data);
-                navigation.navigate('UploadPhoto')
+                navigation.navigate('UploadPhoto', data)
 
             })
             .catch((error) => {

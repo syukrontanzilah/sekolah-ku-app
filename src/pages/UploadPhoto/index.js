@@ -6,7 +6,8 @@ import { ILNullPhoto, IconAdd, IconRemove } from '../../asset'
 import ImagePicker from 'react-native-image-picker';
 import { showMessage } from 'react-native-flash-message'
 
-const UploadPhoto = ({ navigation }) => {
+const UploadPhoto = ({ navigation, route }) => {
+    const {fullName, kelas } = route.params
     const [hasPhoto, setHasPhoto] = useState(false)
     const [photo, setPhoto] = useState(ILNullPhoto)
     const getImage = () => {
@@ -44,8 +45,8 @@ const UploadPhoto = ({ navigation }) => {
                     </TouchableOpacity>
                     <Gap height={20} />
 
-                    <Text style={styles.name}>Seyla Marissa</Text>
-                    <Text style={styles.desc}>2A</Text>
+                    <Text style={styles.name}>{fullName}</Text>
+                    <Text style={styles.desc}>{kelas}</Text>
                 </View>
 
 
@@ -105,13 +106,15 @@ const styles = StyleSheet.create({
         fontSize: 24,
         color: colors.secondary,
         fontFamily: fonts.primary[600],
-        textAlign: 'center'
+        textAlign: 'center',
+        textTransform: 'capitalize'
     },
     desc: {
         fontSize: 18,
         color: colors.text.secondary,
         fontFamily: fonts.primary[600],
-        textAlign: 'center'
+        textAlign: 'center',
+        textTransform: 'uppercase'
     },
 
 
