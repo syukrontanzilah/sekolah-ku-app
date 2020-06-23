@@ -4,16 +4,27 @@ import { Header, Button, Link, Gap } from '../../component'
 import { colors, fonts } from '../../utils'
 import { ILNullPhoto, IconAdd, IconRemove } from '../../asset'
 import ImagePicker from 'react-native-image-picker';
+import { showMessage } from 'react-native-flash-message'
 
 const UploadPhoto = ({ navigation }) => {
     const [hasPhoto, setHasPhoto] = useState(false)
     const [photo, setPhoto] = useState(ILNullPhoto)
-    const getImage = ()=> {
+    const getImage = () => {
         ImagePicker.launchImageLibrary({}, (response) => {
-            const source = { uri: response.uri}
-          setPhoto(source)
-          setHasPhoto(true)
-          });
+            if (response.didCancel || response.error) {
+                showMessage({
+                    message: 'Oops.. Kayaknya kamu tidak memilih fotonya',
+                    type: 'default',
+                    backgroundColor: 'salmon',
+
+                })
+            } else {
+                const source = { uri: response.uri }
+                setPhoto(source)
+                setHasPhoto(true)
+            }
+
+        });
     }
     return (
         <View style={styles.page}>
@@ -23,7 +34,7 @@ const UploadPhoto = ({ navigation }) => {
             <View style={styles.content}>
                 <View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
                     <TouchableOpacity style={styles.avatarWrapper}
-                    onPress={getImage}>
+                        onPress={getImage}>
                         <Image source={photo}
                             style={styles.avatar} />
                         {hasPhoto && <IconRemove style={styles.addFoto} />}
@@ -40,7 +51,7 @@ const UploadPhoto = ({ navigation }) => {
 
                 <View>
                     <Button
-                        disable= {!hasPhoto}
+                        disable={!hasPhoto}
                         onPress={() => navigation.replace('MainApp')}
                         title='Upload dan Lanjutkan..' />
                     <Gap height={30} />
@@ -81,7 +92,7 @@ const styles = StyleSheet.create({
     avatar: {
         height: 110,
         width: 110,
-        borderRadius: 110/2
+        borderRadius: 110 / 2
     },
     addFoto: {
         position: 'absolute',

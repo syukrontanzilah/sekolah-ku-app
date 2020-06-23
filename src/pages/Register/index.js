@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import { Header, Input, Button, Gap, Loading, } from '../../component'
-import { colors, fonts, useForm } from '../../utils';
+import { colors, fonts, useForm, storeData, getData } from '../../utils';
 import { Fire } from '../../config';
 import { showMessage, hideMessage } from "react-native-flash-message";
+import AsyncStorage from '@react-native-community/async-storage';
 
 const Register = ({ navigation }) => {
     const [form, setForm] = useForm({
@@ -16,6 +17,7 @@ const Register = ({ navigation }) => {
     const [loading, setLoading] = useState(false)
 
     const onContinue = () => {
+
         setLoading(true);
         Fire.auth()
             .createUserWithEmailAndPassword(form.email, form.password)
@@ -29,21 +31,24 @@ const Register = ({ navigation }) => {
                     email: form.email,
                 }
                 Fire
-                .database()
-                .ref('users/' +success.user.uid+ '/')
-                .set(data)
+                    .database()
+                    .ref('users/' + success.user.uid + '/')
+                    .set(data)
+
+                storeData('user', data);
+                navigation.navigate('UploadPhoto')
+
             })
             .catch((error) => {
                 const errorMessage = error.message;
                 setLoading(false)
                 showMessage({
                     message: errorMessage,
-                    type : 'default',
+                    type: 'default',
                     backgroundColor: 'salmon',
                 })
             });
 
-        // navigation.navigate('UploadPhoto')
     }
     return (
         <>
