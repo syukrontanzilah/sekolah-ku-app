@@ -1,11 +1,17 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { Guru1, Guru2, JSONCategoryGuru } from '../../asset'
 import { CategoryGuru, FavoriteGuru, Gap, HomeProfile, InfoSekolah } from '../../component'
-import { colors, fonts } from '../../utils'
+import { colors, fonts, getData } from '../../utils'
 
 
 const Home = ({navigation}) => {
+    useEffect(()=> {
+        getData('user')
+        .then(res => {
+
+        })
+    }, [])
     return (
         <View style={styles.page}>
             {/* <View style={{ position: 'absolute', top: 16, right: 16 }}>
@@ -118,7 +124,7 @@ const styles = StyleSheet.create({
     },
     kota: {
         fontFamily: fonts.primary[600],
-        fontSize: 16,
+        fontSize: 15,
         color: colors.border,
         textAlign: 'right',
         opacity: 0.8

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { Header, Button, Link, Gap } from '../../component'
-import { colors, fonts } from '../../utils'
+import { colors, fonts, storeData } from '../../utils'
 import { ILNullPhoto, IconAdd, IconRemove } from '../../asset'
 import ImagePicker from 'react-native-image-picker';
 import { showMessage } from 'react-native-flash-message'
@@ -13,7 +13,7 @@ const UploadPhoto = ({ navigation, route }) => {
     const [hasPhoto, setHasPhoto] = useState(false)
     const [photo, setPhoto] = useState(ILNullPhoto)
     const getImage = () => {
-        ImagePicker.launchImageLibrary({}, (response) => {
+        ImagePicker.launchImageLibrary({ quality: 0.8, maxWidth: 250, maxHeight: 250 }, (response) => {
             if (response.didCancel || response.error) {
                 showMessage({
                     message: 'Oops.. Kayaknya kamu tidak memilih fotonya',
@@ -36,6 +36,12 @@ const UploadPhoto = ({ navigation, route }) => {
         Fire.database()
             .ref('users/' + uid + '/')
             .update({ photo: photoForDB });
+
+        const data = route.params;
+        data.photo = photoForDB;
+
+        storeData('user', data)
+
         navigation.replace('MainApp')
     }
     return (
