@@ -5,18 +5,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ILLogo } from '../../asset'
 import { Button, Gap, Input, Link } from '../../component/atom'
 import { Fire } from '../../config'
-import { colors, fonts, storeData, useForm } from '../../utils'
+import { colors, fonts, storeData, useForm, showError } from '../../utils'
 
 const Login = ({ navigation }) => {
     const [form, setForm] = useForm({ email: '', password: '' })
     const dispatch = useDispatch();
 
     const login = () => {
-       dispatch({type: 'SET_LOADING', value: true})
+        dispatch({ type: 'SET_LOADING', value: true })
         Fire.auth()
-        .signInWithEmailAndPassword(form.email, form.password)
+            .signInWithEmailAndPassword(form.email, form.password)
             .then(res => {
-                dispatch({type: 'SET_LOADING', value: false})
+                dispatch({ type: 'SET_LOADING', value: false })
                 Fire.database().ref(`users/${res.user.uid}/`)
                     .once('value')
                     .then(resDB => {
@@ -27,54 +27,50 @@ const Login = ({ navigation }) => {
                     });
             })
             .catch(err => {
-                dispatch({type: 'SET_LOADING', value: false})
-                showMessage({
-                    message: err.message,
-                    type: 'default',
-                    backgroundColor: 'salmon'
-                })
+                dispatch({ type: 'SET_LOADING', value: false })
+                showError(err.message)
             })
     }
     return (
-     
-            <View style={styles.page}>
-                <ScrollView
-                    showsVerticalScrollIndicator={false}>
-                    <Gap height={40} />
 
-                    <View style={{ height: 80, width: 80 }}>
-                        <ILLogo />
-                    </View>
-                    <View>
-                        <Text style={styles.desc}>Masuk dan lebih dekat dengan Sekolah mu</Text>
+        <View style={styles.page}>
+            <ScrollView
+                showsVerticalScrollIndicator={false}>
+                <Gap height={40} />
 
-                        <Input
-                            label='Alamat Email'
-                            value={form.email}
-                            onChangeText={(value) => setForm('email', value)} />
-                        <Gap height={20} />
+                <View style={{ height: 80, width: 80 }}>
+                    <ILLogo />
+                </View>
+                <View>
+                    <Text style={styles.desc}>Masuk dan lebih dekat dengan Sekolah mu</Text>
 
-                        <Input
-                            label='Kata Sandi'
-                            secureTextEntry
-                            value={form.password}
-                            onChangeText={(value) => setForm('password', value)} />
-                        <Gap height={10} />
+                    <Input
+                        label='Alamat Email'
+                        value={form.email}
+                        onChangeText={(value) => setForm('email', value)} />
+                    <Gap height={20} />
 
-                        <Link title='Lupa kata sandi' size={12} />
-                        <Gap height={20} />
-                        <Button title='Masuk'
-                            onPress={login}
-                        />
-                        <Gap height={15} />
-                        <Link
-                            onPress={() => navigation.navigate('Register')}
-                            title='Buat akun baru' size={16} align='center' />
-                    </View>
+                    <Input
+                        label='Kata Sandi'
+                        secureTextEntry
+                        value={form.password}
+                        onChangeText={(value) => setForm('password', value)} />
+                    <Gap height={10} />
+
+                    <Link title='Lupa kata sandi' size={12} />
+                    <Gap height={20} />
+                    <Button title='Masuk'
+                        onPress={login}
+                    />
                     <Gap height={15} />
+                    <Link
+                        onPress={() => navigation.navigate('Register')}
+                        title='Buat akun baru' size={16} align='center' />
+                </View>
+                <Gap height={15} />
 
-                </ScrollView>
-            </View>
+            </ScrollView>
+        </View>
     )
 }
 
