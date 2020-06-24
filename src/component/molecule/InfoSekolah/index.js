@@ -1,24 +1,23 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
-import { News1 } from '../../../asset'
-import { fonts, colors } from '../../../utils'
+import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { colors, fonts } from '../../../utils'
 
-const InfoSekolah = () => {
+const InfoSekolah = ({title, date, image}) => {
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container}>
             <View style={{flex:1}}>
-                <Text style={styles.title}>Struktur Organisasi Madrasah Tsanawiyyah Negeri At-Tanzil, Kota Sukabumi</Text>
-                <Text style={styles.desc}>Senin 29 Juni 2019</Text>
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.desc}>{date}</Text>
             </View>
 
             <View>
                 <Image
-                    source={News1}
+                    source={{uri: image}}
                     style={styles.image}
                 />
             </View>
 
-        </View>
+        </TouchableOpacity>
     )
 }
 

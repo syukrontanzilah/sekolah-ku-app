@@ -1,10 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
-import { fonts, colors } from '../../utils'
-import {ListBerita, Gap} from '../../component'
+import { fonts, colors, showError } from '../../utils'
+import { ListBerita, Gap } from '../../component'
 import { News1, News2, News3, News4 } from '../../asset'
+import { Fire } from '../../config'
 
 const Sekolah = () => {
+    const [news, setNews] = useState([]);
+    useEffect(() => {
+        Fire.database()
+            .ref('news')
+            .once('value')
+            .then(res => {
+                if (res.val()) {
+                    setNews(res.val())
+                }
+            })
+            .catch(err => {
+                showError(err.message)
+            })
+    }, [])
     return (
         <View style={styles.page}>
             <Text style={styles.title}>Kabar Sekolah</Text>
@@ -14,21 +29,19 @@ const Sekolah = () => {
                 style={styles.content}
                 showsVerticalScrollIndicator={false}>
 
-                <ListBerita 
-                title = 'Pengumuman Hasil Evaluasi Belajar Semester 2 MTs. Negeri At-Tanzil, Tahun 2020/2021' 
-                desc='Senin, 21 Juni 2020'
-                image= {News1} />
-                <ListBerita 
-                title='Sekolah kita meraih Juara 1 Cerdas Cermat tingkat SLTP Se-Jawa Barat' desc='Jumat, 18 Juni 2020'
-                image={News2} />
-                <ListBerita 
-                title='Tim Paskibraka MTs. At-Tanzil beraksi di Monas' 
-                desc='Senin 15 Juni 2020'
-                image={News3}/>
-                <ListBerita title= 'Cara Mengatasi Malas Menghafal Saat menghadapi Ujian akhir (Oleh: Karissa Aprillia, Kelas 9A)' desc='Jumat 10 Juni 2020'
-                image={News4}/>
+                    {
+                        news.map(item => {
+                            return(
+                                <ListBerita
+                                key ={item.id}
+                                title ={item.title}
+                                date = {item.date}
+                                image ={item.image} />
+                            )
+                        })
+                    }
 
-                <Gap height={500}/>
+                <Gap height={100} />
             </ScrollView>
 
 

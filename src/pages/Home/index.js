@@ -1,17 +1,29 @@
-import React, {useEffect} from 'react'
+import React, { useEffect, useState } from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { Guru1, Guru2, JSONCategoryGuru } from '../../asset'
 import { CategoryGuru, FavoriteGuru, Gap, HomeProfile, InfoSekolah } from '../../component'
-import { colors, fonts, getData } from '../../utils'
+import { colors, fonts, getData, showError } from '../../utils'
+import { Fire } from '../../config'
 
 
-const Home = ({navigation}) => {
-    useEffect(()=> {
-        getData('user')
-        .then(res => {
+const Home = ({ navigation }) => {
+    const [profileSekolah, setProfileSekolah] = useState([])
 
-        })
+    useEffect(() => {
+        Fire.database()
+            .ref('profilesekolah')
+            .once('value')
+            .then(res => {
+                if (res.val()) {
+                    setProfileSekolah(res.val())
+                }
+            })
+            .catch(err => {
+                showError(err.message)
+            })
+
     }, [])
+
     return (
         <View style={styles.page}>
             {/* <View style={{ position: 'absolute', top: 16, right: 16 }}>
@@ -29,7 +41,7 @@ const Home = ({navigation}) => {
                     paddingVertical: 5
                 }}>
                     <View style={{ flex: 1 }}>
-                        <HomeProfile onPress={()=> navigation.navigate('UserProfile')}/>
+                        <HomeProfile onPress={() => navigation.navigate('UserProfile')} />
                     </View>
 
                     <View style={{
@@ -58,10 +70,10 @@ const Home = ({navigation}) => {
                         <Gap width={16} />
                         {
                             JSONCategoryGuru.data.map(item => {
-                                return <CategoryGuru 
-                                onPress={()=>navigation.navigate('PilihGuru')}
-                                key={item.id}
-                                category ={item.category}/>
+                                return <CategoryGuru
+                                    onPress={() => navigation.navigate('PilihGuru')}
+                                    key={item.id}
+                                    category={item.category} />
                             })
                         }
                         <Gap width={6} />
@@ -73,36 +85,42 @@ const Home = ({navigation}) => {
                 <Gap height={15} />
                 <Text style={styles.textDesc}>Random Guru</Text>
                 <View style={{ paddingHorizontal: 16, paddingVertical: 15 }}>
-                    <FavoriteGuru 
-                    avatar={Guru1}
-                    name='Alissa Subandono'
-                    desc = 'Bahasa Indonesia'
-                    onPress = {()=>navigation.navigate('GuruProfile')}/>
-                   
                     <FavoriteGuru
-                    avatar ={Guru2}
-                    name= 'Jayanti atmaja'
-                    desc='Bahasa Jepang' />
+                        avatar={Guru1}
+                        name='Alissa Subandono'
+                        desc='Bahasa Indonesia'
+                        onPress={() => navigation.navigate('GuruProfile')} />
 
                     <FavoriteGuru
-                    avatar={Guru2}
-                    name='Julian ferdinand'
-                    desc='Bahasa mandarin' />
+                        avatar={Guru2}
+                        name='Jayanti atmaja'
+                        desc='Bahasa Jepang' />
+
+                    <FavoriteGuru
+                        avatar={Guru2}
+                        name='Julian ferdinand'
+                        desc='Bahasa mandarin' />
                 </View>
 
                 <Gap height={10} />
 
                 <Text style={styles.textDesc}>Profile Sekolah</Text>
                 <View style={{ paddingHorizontal: 16, paddingVertical: 15 }}>
-                  <InfoSekolah/>
-                  <InfoSekolah/>
-                  <InfoSekolah/>
 
+                    {
+                        profileSekolah.map(item => {
+                            return (
+                                <InfoSekolah
+                                    key={item.id}
+                                    title={item.title}
+                                    date={item.date}
+                                    image={item.image} />
+
+                            )
+                        })
+                    }
                 </View>
-
-
-
-                <Gap height={40} />
+                <Gap height={30} />
             </ScrollView>
         </View>
     )
@@ -120,7 +138,7 @@ const styles = StyleSheet.create({
         fontFamily: fonts.primary[800],
         fontSize: 20,
         color: colors.secondary,
-      
+
     },
     kota: {
         fontFamily: fonts.primary[600],
