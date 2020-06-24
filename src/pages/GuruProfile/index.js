@@ -3,7 +3,8 @@ import { StyleSheet, Text, View } from 'react-native'
 import { Header, Profile, ProfileItem, Button, Gap } from '../../component'
 import { colors } from '../../utils'
 
-const GuruProfile = ({navigation}) => {
+const GuruProfile = ({navigation, route}) => {
+    const dataGuru = route.params;
     return (
         <View style={styles.page}>
             <Header title='Profile Guru'
@@ -11,14 +12,17 @@ const GuruProfile = ({navigation}) => {
             <Gap height={10} />
 
             <Profile
-                name='Alissa Soebandono SAg'
-                desc='Bahasa Indonesia' />
+                name= {dataGuru.data.fullName}
+                desc={dataGuru.data.subject}
+                photo ={{uri: dataGuru.data.photo}}
+                />
+                
             <Gap height={20} />
 
             <View style={{ paddingHorizontal: 25 }}>
-                <ProfileItem label='Alumnus:' value='Universitas Indonesia' />
-                <ProfileItem label='Alamat:' value='Cigombong, Bogor' />
-                <ProfileItem label = 'Motto:' value= 'Sekali Hidup Hiduplah yang berarti, jadilah manusia yang bermanfaat bagi orang lain' />
+                <ProfileItem label='Alumnus:' value={dataGuru.data.university} />
+                <ProfileItem label='Alamat:' value={dataGuru.data.address} />
+                <ProfileItem label = 'Motto:' value= {dataGuru.data.motto} />
                 <Gap height={30} />
                 <Button 
                 onPress= {()=> navigation.navigate('Chatting')}

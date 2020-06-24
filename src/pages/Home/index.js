@@ -21,7 +21,7 @@ const Home = ({ navigation }) => {
         Fire.database()
             .ref('guru/')
             .orderByChild('rate')
-            .limitToLast(4)
+            .limitToLast(5)
             .once('value')
             .then(res => {
                 if (res.val()) {
@@ -128,7 +128,7 @@ const Home = ({ navigation }) => {
                 </View>
 
                 <Gap height={15} />
-                <Text style={styles.textDesc}>Random Guru</Text>
+                <Text style={styles.textDesc}>Guru Favorite Mu</Text>
                 <View style={{ paddingHorizontal: 16, paddingVertical: 15 }}>
                     {
                         guruGuru.map(guru => {
@@ -138,7 +138,7 @@ const Home = ({ navigation }) => {
                             avatar={{uri: guru.data.photo}}
                             name= {guru.data.fullName}
                             desc={guru.data.subject}
-                            onPress={() => navigation.navigate('GuruProfile')} />
+                            onPress={() => navigation.navigate('GuruProfile', guru)} />
                            )
                         })
                     }
