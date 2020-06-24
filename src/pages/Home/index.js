@@ -116,7 +116,7 @@ const Home = ({ navigation }) => {
                         {
                             categoryGuru.map(item => {
                                 return <CategoryGuru
-                                    onPress={() => navigation.navigate('PilihGuru')}
+                                    onPress={() => navigation.navigate('PilihGuru', item)}
                                     key={item.id}
                                     category={item.category} />
                             })
