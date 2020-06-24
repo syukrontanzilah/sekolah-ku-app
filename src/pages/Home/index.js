@@ -8,8 +8,54 @@ import { Fire } from '../../config'
 
 const Home = ({ navigation }) => {
     const [profileSekolah, setProfileSekolah] = useState([])
-
+    const [categoryGuru, setCategoryGuru] = useState([])
+    const [guruGuru, setGuruGuru] = useState([])
     useEffect(() => {
+        getCategoryGuru()
+        getRandomGuru()
+        getProfileSekolah()
+    }, [])
+
+
+    const getRandomGuru = () => {
+        Fire.database()
+            .ref('guru/')
+            .orderByChild('rate')
+            .limitToLast(4)
+            .once('value')
+            .then(res => {
+                if (res.val()) {
+                    const oldData = res.val()
+                    const data = [];
+                    Object.keys(oldData).map(key => {
+                        data.push({
+                            id: key,
+                            data: oldData[key]
+                        })
+                    })
+                    setGuruGuru(data)
+                }
+            })
+            .catch(err => {
+                showError(err.message)
+            });
+    }
+
+    const getCategoryGuru = () => {
+        Fire.database()
+            .ref('category_guru')
+            .once('value')
+            .then(res => {
+                if (res.val()) {
+                    setCategoryGuru(res.val())
+                }
+            })
+            .catch(err => {
+                showError(err.message)
+            });
+    }
+
+    const getProfileSekolah = () => {
         Fire.database()
             .ref('profilesekolah')
             .once('value')
@@ -20,9 +66,8 @@ const Home = ({ navigation }) => {
             })
             .catch(err => {
                 showError(err.message)
-            })
-
-    }, [])
+            });
+    }
 
     return (
         <View style={styles.page}>
@@ -69,7 +114,7 @@ const Home = ({ navigation }) => {
                         showsHorizontalScrollIndicator={false}>
                         <Gap width={16} />
                         {
-                            JSONCategoryGuru.data.map(item => {
+                            categoryGuru.map(item => {
                                 return <CategoryGuru
                                     onPress={() => navigation.navigate('PilihGuru')}
                                     key={item.id}
@@ -85,28 +130,25 @@ const Home = ({ navigation }) => {
                 <Gap height={15} />
                 <Text style={styles.textDesc}>Random Guru</Text>
                 <View style={{ paddingHorizontal: 16, paddingVertical: 15 }}>
-                    <FavoriteGuru
-                        avatar={Guru1}
-                        name='Alissa Subandono'
-                        desc='Bahasa Indonesia'
-                        onPress={() => navigation.navigate('GuruProfile')} />
-
-                    <FavoriteGuru
-                        avatar={Guru2}
-                        name='Jayanti atmaja'
-                        desc='Bahasa Jepang' />
-
-                    <FavoriteGuru
-                        avatar={Guru2}
-                        name='Julian ferdinand'
-                        desc='Bahasa mandarin' />
+                    {
+                        guruGuru.map(guru => {
+                           return (
+                            <FavoriteGuru
+                            key={guru.id}
+                            avatar={{uri: guru.data.photo}}
+                            name= {guru.data.fullName}
+                            desc={guru.data.subject}
+                            onPress={() => navigation.navigate('GuruProfile')} />
+                           )
+                        })
+                    }
+                   
                 </View>
 
                 <Gap height={10} />
 
                 <Text style={styles.textDesc}>Profile Sekolah</Text>
                 <View style={{ paddingHorizontal: 16, paddingVertical: 15 }}>
-
                     {
                         profileSekolah.map(item => {
                             return (
@@ -115,7 +157,6 @@ const Home = ({ navigation }) => {
                                     title={item.title}
                                     date={item.date}
                                     image={item.image} />
-
                             )
                         })
                     }
