@@ -1,21 +1,22 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
-import { ILLogo } from '../../asset'
-import { Input, Link, Button, Gap } from '../../component/atom'
-import { colors, fonts, useForm, storeData } from '../../utils'
-import { Fire } from '../../config'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { showMessage } from 'react-native-flash-message'
-import { Loading } from '../../component'
+import { useDispatch, useSelector } from 'react-redux'
+import { ILLogo } from '../../asset'
+import { Button, Gap, Input, Link } from '../../component/atom'
+import { Fire } from '../../config'
+import { colors, fonts, storeData, useForm } from '../../utils'
 
 const Login = ({ navigation }) => {
     const [form, setForm] = useForm({ email: '', password: '' })
-    const [loading, setLoading] = useState(false)
+    const dispatch = useDispatch();
 
     const login = () => {
-        setLoading(true)
-        Fire.auth().signInWithEmailAndPassword(form.email, form.password)
+       dispatch({type: 'SET_LOADING', value: true})
+        Fire.auth()
+        .signInWithEmailAndPassword(form.email, form.password)
             .then(res => {
-                setLoading(false)
+                dispatch({type: 'SET_LOADING', value: false})
                 Fire.database().ref(`users/${res.user.uid}/`)
                     .once('value')
                     .then(resDB => {
@@ -26,7 +27,7 @@ const Login = ({ navigation }) => {
                     });
             })
             .catch(err => {
-                setLoading(false)
+                dispatch({type: 'SET_LOADING', value: false})
                 showMessage({
                     message: err.message,
                     type: 'default',
@@ -35,7 +36,7 @@ const Login = ({ navigation }) => {
             })
     }
     return (
-        <>
+     
             <View style={styles.page}>
                 <ScrollView
                     showsVerticalScrollIndicator={false}>
@@ -74,11 +75,6 @@ const Login = ({ navigation }) => {
 
                 </ScrollView>
             </View>
-            {
-                loading && <Loading />
-            }
-
-        </>
     )
 }
 
