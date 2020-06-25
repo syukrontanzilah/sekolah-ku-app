@@ -45,7 +45,7 @@ const PilihGuru = ({ navigation, route }) => {
                     listGuru.map(guru => {
                         return (
                             <List
-                                onPress={() => navigation.navigate('Chatting')}
+                                onPress={() => navigation.navigate('GuruProfile', guru)}
                                 key={guru.id}
                                 profile={{uri: guru.data.photo}}
                                 name={guru.data.fullName}

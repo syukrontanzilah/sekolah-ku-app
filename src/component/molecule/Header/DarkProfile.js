@@ -4,7 +4,7 @@ import { colors, fonts } from '../../../utils'
 import { Button } from '../../atom'
 import { Guru1 } from '../../../asset'
 
-const DarkProfile = ({onPress}) => {
+const DarkProfile = ({onPress, title, desc, photo}) => {
     return (
         <View style={styles.container}>
             <Button
@@ -13,11 +13,11 @@ const DarkProfile = ({onPress}) => {
                 icon='back-light' />
 
             <View style={styles.content}>
-                <Text style={styles.name}>Prilly Latuconsina</Text>
-                <Text style={styles.desc}>Bahasa Indonesia</Text>
+                <Text style={styles.name}>{title}</Text>
+                <Text style={styles.desc}>{desc}</Text>
             </View>
 
-            <Image source={Guru1} style={styles.avatar} />
+            <Image source={photo} style={styles.avatar} />
 
         </View>
     )

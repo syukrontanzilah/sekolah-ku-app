@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, YellowBox } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import Router from './router';
 import FlashMessage from "react-native-flash-message";
@@ -9,6 +9,7 @@ import store from './redux/store';
 
 const MainApp = () => {
   const stateGlobal = useSelector(state => state)
+  YellowBox.ignoreWarnings(['Setting a timer'])
   return (
     <>
       <NavigationContainer>

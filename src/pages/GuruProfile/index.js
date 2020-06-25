@@ -25,7 +25,7 @@ const GuruProfile = ({navigation, route}) => {
                 <ProfileItem label = 'Motto:' value= {dataGuru.data.motto} />
                 <Gap height={30} />
                 <Button 
-                onPress= {()=> navigation.navigate('Chatting')}
+                onPress= {()=> navigation.navigate('Chatting', dataGuru)}
                 title='Mulai Bertanya' />
             </View>
 

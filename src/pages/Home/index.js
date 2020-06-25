@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
-import { Guru1, Guru2, JSONCategoryGuru } from '../../asset'
 import { CategoryGuru, FavoriteGuru, Gap, HomeProfile, InfoSekolah } from '../../component'
-import { colors, fonts, getData, showError } from '../../utils'
 import { Fire } from '../../config'
+import { colors, fonts, showError } from '../../utils'
 
 
 const Home = ({ navigation }) => {
@@ -47,7 +46,9 @@ const Home = ({ navigation }) => {
             .once('value')
             .then(res => {
                 if (res.val()) {
-                    setCategoryGuru(res.val())
+                    const data = res.val();
+                    const filterData = data.filter(el => el !== null);
+                    setCategoryGuru(filterData)
                 }
             })
             .catch(err => {
@@ -61,7 +62,9 @@ const Home = ({ navigation }) => {
             .once('value')
             .then(res => {
                 if (res.val()) {
-                    setProfileSekolah(res.val())
+                    const data = res.val();
+                    const filterData = data.filter(el => el !== null);
+                    setProfileSekolah(filterData)
                 }
             })
             .catch(err => {

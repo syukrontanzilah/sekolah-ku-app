@@ -1,34 +1,80 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { Header, ChatItem, InputChat, Gap, Button, } from '../../component'
-import { fonts, colors } from '../../utils'
+import { fonts, colors, getData, showError } from '../../utils'
 import { ScrollView } from 'react-native-gesture-handler'
+import { Fire } from '../../config'
 
-const Chatting = ({ navigation }) => {
+const Chatting = ({ navigation, route }) => {
+    const dataGuru = route.params;
+    const [chatContent, setChatContent] = useState('');
+    const [user, setUser] = useState({})
+
+    useEffect(() => {
+        getData('user')
+            .then(res => {
+                setUser(res)
+            })
+    }, [])
+
+    const chatSend = () => {
+        const today = new Date();
+        const hour = today.getHours()
+        const minutes = today.getMinutes()
+        const year = today.getFullYear();
+        const month = today.getMonth() + 1;
+        const date = today.getDate()
+        const data = {
+            sendBy: user.uid,
+            chatDate: new Date().getTime(),
+            chatTime: `${hour}:${minutes} ${hour > 12 ? 'PM' : 'AM'}`,
+            chatContent: chatContent,
+        };
+        //kirim ke firebase
+        Fire.database()
+            .ref(
+                `chatting/${user.uid}_${dataGuru.data.uid}/allChat/${year}-${month}-${date}`
+            )
+            .push(data)
+            .then(() => {
+                setChatContent('')
+            })
+            .catch(err => {
+                showError(err.message)
+            })
+
+
+    }
+
     return (
         <View style={styles.page}>
             <Header
                 onPress={() => navigation.goBack()}
                 type='dark-profile'
-                title='Alissa Soebandono SAg.' />
+                title={dataGuru.data.fullName}
+                desc={dataGuru.data.subject}
+                photo={{ uri: dataGuru.data.photo }}
+            />
 
             <ScrollView
                 showsVerticalScrollIndicator={false}
                 style={styles.content}>
                 <Text style={styles.chatDate}>Senin 27 Mei 2020</Text>
-                <ChatItem isMe/>
+                <ChatItem isMe />
                 <ChatItem />
-                <ChatItem isMe/>
+                <ChatItem isMe />
 
-
-                <Gap height={1000} />
+                <Gap height={50} />
             </ScrollView>
 
-
-
             <View style={styles.buttonWrap}>
-                <View style={{ flex: 1,  }}>
-                    <InputChat />
+                <View style={{ flex: 1, }}>
+                    <InputChat
+                        value={chatContent}
+                        onChangeText={(value) => setChatContent(value)}
+                        onButtonPress={chatSend}
+                        placeholder={`Tulis pesan utk Bpk/ibu ${dataGuru.data.fullName}`}
+                    />
                 </View>
 
             </View>
