@@ -24,12 +24,12 @@ export default InputChat
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'white',
+        //backgroundColor: 'white',
         flexDirection: 'row'
     },
 
     textInput: {
-        backgroundColor: colors.border,
+        backgroundColor: colors.white,
         borderRadius: 10,
         padding: 14,
         fontSize: 16,

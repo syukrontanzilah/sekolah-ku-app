@@ -5,7 +5,8 @@ import {
     Sekolah, PilihGuru, Chatting, UserProfile, EditProfile,
     GuruProfile,
     Artikel,
-    ArtikelNews
+    ArtikelNews,
+    Alumni
 } from '../pages'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../component';
@@ -91,6 +92,11 @@ const Router = () => {
             <Stack.Screen
                 name='ArtikelNews'
                 component={ArtikelNews} />
+
+            <Stack.Screen
+                name='Alumni'
+                component={Alumni} />
+
 
         </Stack.Navigator>
     )

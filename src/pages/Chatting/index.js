@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, ImageBackground } from 'react-native'
 import { Header, ChatItem, InputChat, Gap, Button, } from '../../component'
 import { fonts, colors, getData, showError, getChatTime, setDateChat } from '../../utils'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -96,7 +96,9 @@ const Chatting = ({ navigation, route }) => {
     };
 
     return (
-        <View style={styles.page}>
+        <ImageBackground style={styles.page}
+        source={require('../../asset/ilustration/chatbckg.png')}
+        >
             <Header
                 onPress={() => navigation.goBack()}
                 type='dark-profile'
@@ -148,7 +150,7 @@ const Chatting = ({ navigation, route }) => {
 
 
 
-        </View>
+        </ImageBackground>
     )
 }
 
@@ -157,7 +159,7 @@ export default Chatting
 const styles = StyleSheet.create({
     page: {
         flex: 1,
-        backgroundColor: colors.white
+        //backgroundColor: colors.white
     },
     content: {
         flex: 1
@@ -171,7 +173,7 @@ const styles = StyleSheet.create({
     },
     buttonWrap: {
         flexDirection: 'row',
-        backgroundColor: 'white',
+        //backgroundColor: 'white',
         paddingHorizontal: 10,
         paddingBottom: 8,
         paddingTop: 5

@@ -13,6 +13,7 @@ import EditProfile from './EditProfile';
 import GuruProfile from './GuruProfile';
 import Artikel from './Artikel';
 import ArtikelNews from './ArtikelNews';
+import Alumni from './Alumni'
 
 
 export {
@@ -30,6 +31,7 @@ export {
     EditProfile,
     GuruProfile,
     Artikel,
-    ArtikelNews
+    ArtikelNews,
+    Alumni
     
 }

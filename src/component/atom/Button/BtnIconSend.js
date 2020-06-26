@@ -24,10 +24,10 @@ export default BtnIconSend
 
 const styles = StyleSheet.create({
     wrapper: (disable) => ({
-        backgroundColor: disable ? colors.border : 'darkcyan', 
+        backgroundColor: disable ? colors.white : 'darkcyan', 
         justifyContent:'center',
         alignItems:'center',
         width:50, height:50,
-        borderRadius: 10, 
+        borderRadius: 50/2, 
     }),
 })
