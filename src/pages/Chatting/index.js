@@ -139,7 +139,7 @@ const Chatting = ({ navigation, route }) => {
                         value={chatContent}
                         onChangeText={value => setChatContent(value)}
                         onButtonPress={chatSend}
-                        placeholder={`Tulis pesan utk Bpk/ibu ${dataGuru.data.fullName}
+                        placeholder={`Tulis pesan untuk ${dataGuru.data.nickName}
                         `}
                     />
                 </View>
