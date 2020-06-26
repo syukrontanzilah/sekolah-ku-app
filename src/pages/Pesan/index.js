@@ -1,30 +1,50 @@
-import React, { useState } from 'react'
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { List } from '../../component'
-import { fonts, colors } from '../../utils'
-import { Guru1, Guru2 } from '../../asset'
+import { Fire } from '../../config'
+import { colors, fonts, getData } from '../../utils'
 
-const Pesan = ({navigation}) => {
-    const [guru] = useState([
-        {
-            id: 1,
-            profile: Guru1,
-            name: 'Prilli Latuconsina SPd.',
-            desc: 'Baik bu guru...'
-        },
-        {
-            id: 2,
-            profile: Guru2,
-            name: 'Alissa Soebandono SPd.',
-            desc: 'wah siap bu guru...'
-        },
-        {
-            id: 3,
-            profile: Guru2,
-            name: 'Siti Saadah S Ag..',
-            desc: 'Ntapppsss...'
-        }
-    ])
+const Pesan = ({ navigation }) => {
+    const [historyChat, setHistoryChat] = useState([])
+    const [user, setUser] = useState({});
+
+
+    useEffect(() => {
+        getDataUserFromLocal()
+        const rootDB = Fire.database().ref()
+        const urlHistory = `messages/${user.uid}/`
+        const messagesDB = rootDB.child(urlHistory)
+
+        messagesDB
+            .on('value', async snapshot => {
+                if (snapshot.val()) {
+                    const oldData = snapshot.val();
+                    const data = [];;
+
+                 const promises = await Object.keys(oldData)
+                        .map( async key => {
+                            const urlUidGuru = `guru/${oldData[key].uidPartner}`
+                            const detailGuru = await rootDB.child(urlUidGuru)
+                                .once('value')
+
+                            data.push({
+                                id: key,
+                                detailGuru: detailGuru.val(),
+                                ...oldData[key]
+                            })
+                        })
+                        await Promise.all(promises)
+                    setHistoryChat(data)
+                }
+            })
+    }, [user.uid])
+
+    const getDataUserFromLocal = () => {
+        getData('user')
+            .then(res => {
+                setUser(res)
+            })
+    }
     return (
         <View style={styles.page}>
 
@@ -32,16 +52,20 @@ const Pesan = ({navigation}) => {
             <ScrollView
                 showsVerticalScrollIndicator={false}>
                 {
-                    guru.map(guru => {
+                    historyChat.map(chat => {
+                        const dataGuru = {
+                            id: chat.detailGuru.uid,
+                            data: chat.detailGuru
+                        }
                         return (
-                             <List 
-                        key ={guru.id}
-                        profile={guru.profile}
-                        name= {guru.name}
-                        desc={guru.desc}
-                        onPress={()=> navigation.navigate('Chatting')} />
+                            <List
+                                key={chat.id}
+                                profile={{uri: chat.detailGuru.photo}}
+                                name={chat.detailGuru.fullName}
+                                desc={chat.lastContentChat}
+                                onPress={() => navigation.navigate('Chatting', dataGuru )} />
                         )
-                       
+
                     })
                 }
             </ScrollView>

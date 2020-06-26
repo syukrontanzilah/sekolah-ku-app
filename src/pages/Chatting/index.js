@@ -62,13 +62,32 @@ const Chatting = ({ navigation, route }) => {
         const chatID = `${user.uid}_${dataGuru.data.uid}`
 
         const urlFirebase = `chatting/${chatID}/allChat/${setDateChat(today)}`
-
+        const urlMessageUser = `messages/${user.uid}/${chatID}`
+        const urlMessageGuru = `messages/${dataGuru.data.uid}/${chatID}`
+        const dataHistoryChatForUser = {
+            lastContentChat: chatContent,
+            lastChatDate: today.getTime(),
+            uidPartner: dataGuru.data.uid,
+        }
+        const dataHistoryChatForGuru = {
+            lastContentChat: chatContent,
+            lastChatDate: today.getTime(),
+            uidPartner: user.uid,
+        }
         //kirim ke firebase
         Fire.database()
             .ref(urlFirebase)
             .push(data)
             .then(() => {
                 setChatContent('');
+                // set history for user
+                Fire.database().ref(urlMessageUser)
+                    .set(dataHistoryChatForUser)
+
+                    // set history for guru
+                    Fire.database()
+                    .ref(urlMessageGuru)
+                    .set(dataHistoryChatForGuru)
             })
             .catch(err => {
                 showError(err.message)
@@ -92,22 +111,22 @@ const Chatting = ({ navigation, route }) => {
                 {
                     chatData.map(chat => {
                         return (
-                        <View key={chat.id}>
-                            <Text style={styles.chatDates}>{chat.id}</Text>
-                            {
-                                chat.data.map(itemChat => {
-                                    const isMe = itemChat.data.sendBy === user.uid
-                                   return  <ChatItem 
-                                   key ={itemChat.id}
-                                   isMe ={isMe}
-                                   text={itemChat.data.chatContent}
-                                   date={itemChat.data.chatTime}
-                                   photo ={isMe ? null : {uri: dataGuru.data.photo}}
-                                   />
-                                })
-                            }
-                           
-                        </View>)
+                            <View key={chat.id}>
+                                <Text style={styles.chatDates}>{chat.id}</Text>
+                                {
+                                    chat.data.map(itemChat => {
+                                        const isMe = itemChat.data.sendBy === user.uid
+                                        return <ChatItem
+                                            key={itemChat.id}
+                                            isMe={isMe}
+                                            text={itemChat.data.chatContent}
+                                            date={itemChat.data.chatTime}
+                                            photo={isMe ? null : { uri: dataGuru.data.photo }}
+                                        />
+                                    })
+                                }
+
+                            </View>)
                     })
                 }
 
