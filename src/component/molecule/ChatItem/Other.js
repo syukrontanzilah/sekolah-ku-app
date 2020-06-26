@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     },
     content: {
         maxWidth: '80%',
+        minWidth: '20%',
         padding: 12,
         backgroundColor: '#00b3b3',
         paddingRight: 18,

@@ -96,11 +96,14 @@ const Chatting = ({ navigation, route }) => {
                             <Text style={styles.chatDates}>{chat.id}</Text>
                             {
                                 chat.data.map(itemChat => {
+                                    const isMe = itemChat.data.sendBy === user.uid
                                    return  <ChatItem 
                                    key ={itemChat.id}
-                                   isMe ={itemChat.data.sendBy === user.uid}
+                                   isMe ={isMe}
                                    text={itemChat.data.chatContent}
-                                   date={itemChat.data.chatTime}/>
+                                   date={itemChat.data.chatTime}
+                                   photo ={isMe ? null : {uri: dataGuru.data.photo}}
+                                   />
                                 })
                             }
                            
