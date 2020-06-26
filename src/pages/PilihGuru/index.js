@@ -59,7 +59,7 @@ const PilihGuru = ({ navigation, route }) => {
 
 
 
-                <Gap height={1000} />
+                <Gap height={100} />
             </ScrollView>
 
 

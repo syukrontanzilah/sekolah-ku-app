@@ -3,9 +3,10 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { News1 } from '../../../asset'
 import { fonts, colors } from '../../../utils'
 
-const ListBerita = ({image, title, date}) => {
+const ListBerita = ({image, title, date, onPress}) => {
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity
+        onPress={onPress} style={styles.container}>
             <Image
                 source={{uri: image}}
                 style={styles.image} />

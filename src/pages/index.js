@@ -10,7 +10,9 @@ import PilihGuru from './PilihGuru';
 import Chatting from './Chatting';
 import UserProfile from './UserProfile';
 import EditProfile from './EditProfile';
-import GuruProfile from './GuruProfile'
+import GuruProfile from './GuruProfile';
+import Artikel from './Artikel';
+import ArtikelNews from './ArtikelNews';
 
 
 export {
@@ -26,6 +28,8 @@ export {
     Chatting,
     UserProfile,
     EditProfile,
-    GuruProfile
+    GuruProfile,
+    Artikel,
+    ArtikelNews
     
 }

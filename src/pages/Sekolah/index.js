@@ -5,7 +5,7 @@ import { ListBerita, Gap } from '../../component'
 import { News1, News2, News3, News4 } from '../../asset'
 import { Fire } from '../../config'
 
-const Sekolah = () => {
+const Sekolah = ({navigation}) => {
     const [news, setNews] = useState([]);
     useEffect(() => {
         Fire.database()
@@ -36,7 +36,9 @@ const Sekolah = () => {
                                 key ={item.id}
                                 title ={item.title}
                                 date = {item.date}
-                                image ={item.image} />
+                                image ={item.image}
+                                onPress={()=> navigation.navigate('ArtikelNews', item)}
+                                 />
                             )
                         })
                     }

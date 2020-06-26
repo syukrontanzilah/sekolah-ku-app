@@ -159,7 +159,8 @@ const Home = ({ navigation }) => {
                                     key={item.id}
                                     title={item.title}
                                     date={item.date}
-                                    image={item.image} />
+                                    image={item.image}
+                                    onPress={() => navigation.navigate('Artikel', item)} />
                             )
                         })
                     }

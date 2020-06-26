@@ -2,9 +2,11 @@ import React from 'react'
 import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { colors, fonts } from '../../../utils'
 
-const InfoSekolah = ({title, date, image}) => {
+const InfoSekolah = ({title, date, image, onPress}) => {
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity 
+        onPress={onPress}
+        style={styles.container}>
             <View style={{flex:1}}>
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.desc}>{date}</Text>
