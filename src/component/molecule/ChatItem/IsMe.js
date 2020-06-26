@@ -3,14 +3,14 @@ import { StyleSheet, Text, View } from 'react-native'
 import { fonts, colors } from '../../../utils'
 
 
-const IsMe = () => {
+const IsMe = ({text, date}) => {
     return (
         <View style={styles.wrapper}>
         <View style={styles.content}>
-            <Text style={styles.text}>Assalamualaikum ibu guru, saya mau bertanya pelajaran yang kemarin </Text>
+            <Text style={styles.text}>{text}</Text>
         </View>
 
-        <Text style={styles.time}>6.00 AM</Text>
+        <Text style={styles.time}>{date}</Text>
     </View>
     )
 }
@@ -35,13 +35,13 @@ const styles = StyleSheet.create({
 
     },
     text: {
-        fontSize: 18,
+        fontSize: 16,
         fontFamily: fonts.primary[600],
         color: colors.secondary
 
     },
     time: {
-        fontSize: 11,
+        fontSize: 8,
         fontFamily: fonts.primary[600],
         color: colors.text.secondary
     }

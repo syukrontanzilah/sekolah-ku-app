@@ -4,19 +4,19 @@ import { fonts, colors } from '../../../utils'
 import { Guru1 } from '../../../asset'
 
 
-const Other = () => {
+const Other = ({text, date, photo}) => {
     return (
         <View style={styles.wrapper}>
 
             <Image
-                source={Guru1} style={styles.avatar} />
+                source={photo} style={styles.avatar} />
             <View>
 
                 <View style={styles.content}>
-                    <Text style={styles.text}>iya silahkan, mau bertanya apa? bilang saja</Text>
+                    <Text style={styles.text}>{text}</Text>
                 </View>
 
-                <Text style={styles.time}>6.00 AM</Text>
+                <Text style={styles.time}>{date}</Text>
             </View>
 
         </View>
@@ -50,13 +50,13 @@ const styles = StyleSheet.create({
 
     },
     text: {
-        fontSize: 18,
+        fontSize: 16,
         fontFamily: fonts.primary[600],
         color: colors.secondary
 
     },
     time: {
-        fontSize: 11,
+        fontSize: 8,
         fontFamily: fonts.primary[600],
         color: colors.text.secondary
     }
