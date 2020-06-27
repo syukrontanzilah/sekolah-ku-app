@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, ScrollView, Image } from 'react-native'
 import { Header, List, Gap } from '../../component'
-import { DummyUser, IconHomeBlack, IconInfoBlack, IconBintang } from '../../asset'
+import { DummyUser, IconHomeBlack, IconInfoBlack, IconBintang, IconNama } from '../../asset'
 import { colors, fonts } from '../../utils'
 import { Fire } from '../../config'
 
@@ -55,7 +55,7 @@ const AlumniList = ({ navigation, route }) => {
 
                                 <View style={styles.wrapperText}>
                                     <View style={styles.textDesc}>
-                                        {/* <IconInfoBlack /> */}
+                                        <IconNama />
                                         <Text style={styles.name}>{alumni.data.fullName}</Text>
                                     </View>
 
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     content: {
-        paddingHorizontal: 10,
+        paddingHorizontal: 16,
     },
     wrapper: {
         flexDirection: 'row',
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 15,
         fontFamily: fonts.primary[800],
-        color: colors.secondary,
+        color: colors.primary,
         marginLeft: 4
 
     },

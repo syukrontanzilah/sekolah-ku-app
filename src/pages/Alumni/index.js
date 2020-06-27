@@ -27,7 +27,7 @@ const Alumni = ({ navigation }) => {
 
             <ScrollView
                 showsVerticalScrollIndicator={false}>
-                <Text style={styles.judul}>Ini adalah halaman Alumi Siswa-siswi MTs. At-Tanzil, Kota Sukabumi. Di halaman ini kita dapat melihat data informasi Siswa-siswi yang telah menyelesaikan pendidikan di sekolah kita berdasarkan tahun kelulusannya.</Text>
+                <Text style={styles.judul}>Ini adalah halaman Alumi Siswa-siswi MTs. At-Tanzil, Kota Sukabumi. Di halaman ini kita dapat melihat data Siswa-siswi yang telah menyelesaikan pendidikan di sekolah kita berdasarkan tahun kelulusannya.</Text>
                 {
                     categoryLulusan.map(item => {
                         return (

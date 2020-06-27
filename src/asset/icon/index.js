@@ -15,6 +15,7 @@ import IconHelp from './help.svg';
 import IconHomeBlack from './house.svg';
 import IconInfoBlack from './info-1.svg';
 import IconBintang from './rating.svg'
+import IconNama from './checked-3.svg'
 
 export {
     IconBackDark,
@@ -33,6 +34,7 @@ export {
     IconHelp,
     IconHomeBlack,
     IconInfoBlack,
-    IconBintang
+    IconBintang,
+    IconNama,
     
 }
