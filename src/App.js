@@ -10,6 +10,7 @@ import store from './redux/store';
 const MainApp = () => {
   const stateGlobal = useSelector(state => state)
   YellowBox.ignoreWarnings(['Setting a timer'])
+  console.disableYellowBox = true;
   return (
     <>
       <NavigationContainer>

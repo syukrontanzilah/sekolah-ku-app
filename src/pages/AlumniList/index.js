@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     imageWrapper: {
         height: 60,
         width: 60,
-        borderRadius: 60 / 2,
+        borderRadius: 10,
         marginRight: 10
     },
     wrapperText: {
