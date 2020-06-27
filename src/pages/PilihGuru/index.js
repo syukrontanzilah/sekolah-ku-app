@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
-import { Header, List, Gap } from '../../component'
-import { Guru1, Guru2, IconNext } from '../../asset'
-import { colors } from '../../utils'
+import { ScrollView, StyleSheet, View } from 'react-native'
+import { Gap, Header, List } from '../../component'
 import { Fire } from '../../config'
+import { colors } from '../../utils'
 
 const PilihGuru = ({ navigation, route }) => {
     const [listGuru, setListGuru] = useState([])

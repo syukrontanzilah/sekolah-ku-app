@@ -12,6 +12,9 @@ import IconEdit from './edit.svg';
 import IconLanguage from './language.svg';
 import IconExit from './exit.svg';
 import IconHelp from './help.svg';
+import IconHomeBlack from './house.svg';
+import IconInfoBlack from './info-1.svg';
+import IconBintang from './rating.svg'
 
 export {
     IconBackDark,
@@ -28,5 +31,8 @@ export {
     IconLanguage,
     IconExit,
     IconHelp,
+    IconHomeBlack,
+    IconInfoBlack,
+    IconBintang
     
 }

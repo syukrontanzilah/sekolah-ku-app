@@ -135,17 +135,17 @@ const Home = ({ navigation }) => {
                 <View style={{ paddingHorizontal: 16, paddingVertical: 15 }}>
                     {
                         guruGuru.map(guru => {
-                           return (
-                            <FavoriteGuru
-                            key={guru.id}
-                            avatar={{uri: guru.data.photo}}
-                            name= {guru.data.fullName}
-                            desc={guru.data.subject}
-                            onPress={() => navigation.navigate('GuruProfile', guru)} />
-                           )
+                            return (
+                                <FavoriteGuru
+                                    key={guru.id}
+                                    avatar={{ uri: guru.data.photo }}
+                                    name={guru.data.fullName}
+                                    desc={guru.data.subject}
+                                    onPress={() => navigation.navigate('GuruProfile', guru)} />
+                            )
                         })
                     }
-                   
+
                 </View>
 
                 <Gap height={10} />

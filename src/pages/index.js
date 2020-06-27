@@ -14,6 +14,7 @@ import GuruProfile from './GuruProfile';
 import Artikel from './Artikel';
 import ArtikelNews from './ArtikelNews';
 import Alumni from './Alumni'
+import AlumniList from './AlumniList'
 
 
 export {
@@ -32,6 +33,7 @@ export {
     GuruProfile,
     Artikel,
     ArtikelNews,
-    Alumni
+    Alumni,
+    AlumniList
     
 }

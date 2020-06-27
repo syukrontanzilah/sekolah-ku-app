@@ -6,7 +6,8 @@ import {
     GuruProfile,
     Artikel,
     ArtikelNews,
-    Alumni
+    Alumni,
+    AlumniList
 } from '../pages'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomNavigator } from '../component';
@@ -96,6 +97,10 @@ const Router = () => {
             <Stack.Screen
                 name='Alumni'
                 component={Alumni} />
+
+            <Stack.Screen
+                name='AlumniList'
+                component={AlumniList} />
 
 
         </Stack.Navigator>
