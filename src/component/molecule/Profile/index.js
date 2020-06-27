@@ -12,7 +12,7 @@ const Profile = ({ name, desc, isRemove, photo, onPress }) => {
                     <Image
                         style={styles.avatar}
                         source={photo} />
-                    {isRemove && <IconRemove style={styles.iconRemove} />}
+                    {/* {isRemove && <IconRemove style={styles.iconRemove} />} */}
                 </View>
             )}
 

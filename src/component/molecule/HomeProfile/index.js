@@ -3,21 +3,21 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { ILLogo, ILNullPhoto, DummyUser } from '../../../asset'
 import { fonts, colors, getData } from '../../../utils'
 
-const HomeProfile = ({ onPress }) => {
-    const [profile, setProfile] = useState({
-        photo: ILNullPhoto,
-        fullName: '',
-        kelas: ''
-    })
+const HomeProfile = ({ onPress, profile }) => {
+    // const [profile, setProfile] = useState({
+    //     photo: ILNullPhoto,
+    //     fullName: '',
+    //     kelas: ''
+    // })
 
-    useEffect(() => {
-        getData('user')
-            .then(res => {
-                const data = res;
-                data.photo = { uri: res.photo }
-                setProfile(res)
-            })
-    }, [])
+    // useEffect(() => {
+    //     getData('user')
+    //         .then(res => {
+    //             const data = res;
+    //             data.photo = { uri: res.photo }
+    //             setProfile(res)
+    //         })
+    // }, [])
     return (
         <TouchableOpacity
             style={styles.container}

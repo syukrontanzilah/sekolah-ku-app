@@ -2,18 +2,27 @@ import React, { useEffect, useState } from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import { CategoryGuru, FavoriteGuru, Gap, HomeProfile, InfoSekolah } from '../../component'
 import { Fire } from '../../config'
-import { colors, fonts, showError } from '../../utils'
+import { colors, fonts, showError, getData } from '../../utils'
+import { ILNullPhoto } from '../../asset'
 
 
 const Home = ({ navigation }) => {
     const [profileSekolah, setProfileSekolah] = useState([])
     const [categoryGuru, setCategoryGuru] = useState([])
     const [guruGuru, setGuruGuru] = useState([])
+    const [profile, setProfile] = useState({
+        photo: ILNullPhoto,
+        fullName: '',
+        kelas: '',
+    })
     useEffect(() => {
         getCategoryGuru()
         getRandomGuru()
         getProfileSekolah()
-    }, [])
+        navigation.addListener('focus', () => {
+            getUserData();
+        })
+    }, [navigation])
 
 
     const getRandomGuru = () => {
@@ -72,6 +81,14 @@ const Home = ({ navigation }) => {
             });
     }
 
+    const getUserData =() => {
+        getData('user').then(res => {
+            const data = res;
+            data.photo = res?.photo?.length > 1 ? {uri: res.photo} :ILNullPhoto;
+            setProfile(res)
+        })
+    }
+
     return (
         <View style={styles.page}>
             {/* <View style={{ position: 'absolute', top: 16, right: 16 }}>
@@ -89,7 +106,9 @@ const Home = ({ navigation }) => {
                     paddingVertical: 5
                 }}>
                     <View style={{ flex: 1 }}>
-                        <HomeProfile onPress={() => navigation.navigate('UserProfile')} />
+                        <HomeProfile 
+                        profile={profile}
+                        onPress={() => navigation.navigate('UserProfile', profile)} />
                     </View>
 
                     <View style={{

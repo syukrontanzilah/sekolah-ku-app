@@ -6,20 +6,21 @@ import { ILNullPhoto } from '../../asset'
 import { Fire } from '../../config'
 import { showMessage } from 'react-native-flash-message'
 
-const UserProfile = ({ navigation }) => {
-    const [profile, setProfile] = useState({
-        fullName: '',
-        kelas: '',
-        photo: ILNullPhoto,
-    })
-    useEffect(() => {
-        getData('user')
-            .then(res => {
-                const data = res;
-                data.photo = { uri: res.photo }
-                setProfile(data)
-            })
-    }, [])
+const UserProfile = ({ navigation, route }) => {
+    const profile = route.params;
+    // const [profile, setProfile] = useState({
+    //     fullName: '',
+    //     kelas: '',
+    //     photo: ILNullPhoto,
+    // })
+    // useEffect(() => {
+    //     getData('user')
+    //         .then(res => {
+    //             const data = res;
+    //             data.photo = { uri: res.photo }
+    //             setProfile(data)
+    //         })
+    // }, [])
 
     const signOut = () => {
         Fire.auth().signOut()
